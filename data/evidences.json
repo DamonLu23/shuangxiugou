@@ -1,0 +1,1761 @@
+{
+ "generated_at": "2026-09-12T18:14:27Z",
+ "note": "仅存来源链接+关键词+日期，不存原文。",
+ "count": 154,
+ "evidences": [
+  {
+   "company_name": "华为技术有限公司",
+   "source_type": "review",
+   "url": "https://zhuanlan.zhihu.com/p/1889085045676962991",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "华为技术有限公司",
+   "source_type": "review",
+   "url": "https://www.zhihu.com/question/345803175",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "华为技术有限公司",
+   "source_type": "review",
+   "url": "https://www.zhihu.com/question/273796178",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "华为技术有限公司",
+   "source_type": "review",
+   "url": "https://zhuanlan.zhihu.com/p/714852376",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "华为技术有限公司",
+   "source_type": "review",
+   "url": "https://tieba.baidu.com/p/6276707728",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "华为技术有限公司",
+   "source_type": "review",
+   "url": "https://www.nowcoder.com/discuss/690238155097755648",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "华为技术有限公司",
+   "source_type": "review",
+   "url": "https://www.nowcoder.com/feed/main/detail/17d4bd948eaa4d41bbaf29b1c167f321",
+   "keywords": [
+    "996"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "三星(中国)投资有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120340690J41034773204.htm?refcode=4021&srccode=402101&preactionid=36dbb021-1ce3-4608-8a8e-762e7ea8c3c2",
+   "keywords": [
+    "做五休二",
+    "三班倒"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "三星(中国)投资有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120340690J41034773204.htm?refcode=4021&srccode=402101&preactionid=2253a89c-a6e2-495e-a269-7d4a4ce59d5b",
+   "keywords": [
+    "做五休二",
+    "三班倒"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "苹果电子产品商贸(北京)有限公司",
+   "source_type": "review",
+   "url": "https://www.zhihu.com/question/24363419",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "苹果电子产品商贸(北京)有限公司",
+   "source_type": "review",
+   "url": "https://zhuanlan.zhihu.com/p/29502958071",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "苹果电子产品商贸(北京)有限公司",
+   "source_type": "review",
+   "url": "https://zhuanlan.zhihu.com/p/523294822",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "联想(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC840683300J40874674611.htm?refcode=4021&srccode=402101&preactionid=8e7231b6-8863-453f-abfa-c2472db9a44f",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "联想(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC840683300J40874674611.htm?refcode=4021&srccode=402101&preactionid=fd7e85e2-aa0a-4736-917d-a620513e414a",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "联想(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC840683300J40866034011.htm?refcode=4021&srccode=402101&preactionid=8e7231b6-8863-453f-abfa-c2472db9a44f",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "联想(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC840683300J40873621111.htm?refcode=4021&srccode=402101&preactionid=8e7231b6-8863-453f-abfa-c2472db9a44f",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "联想(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC840683300J40873621311.htm?refcode=4021&srccode=402101&preactionid=8e7231b6-8863-453f-abfa-c2472db9a44f",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "联想(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC840683300J40866034011.htm?refcode=4021&srccode=402101&preactionid=fd7e85e2-aa0a-4736-917d-a620513e414a",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "联想(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC840683300J40873621111.htm?refcode=4021&srccode=402101&preactionid=fd7e85e2-aa0a-4736-917d-a620513e414a",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "联想(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC840683300J40873621311.htm?refcode=4021&srccode=402101&preactionid=fd7e85e2-aa0a-4736-917d-a620513e414a",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "联想(北京)有限公司",
+   "source_type": "review_promo",
+   "url": "https://lestore.lenovo.com/",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "华硕电脑(上海)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC524126130J40886903614.htm?refcode=4021&srccode=402101&preactionid=995dd2bf-f0b5-42fe-b041-64a545f6b1b9",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "华硕电脑(上海)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC524126130J40886903614.htm?refcode=4021&srccode=402101&preactionid=3ffc35d5-0fda-4042-be79-34774c5aa815",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "海尔智家股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CCL1350788430J41034608704.htm?refcode=4021&srccode=402101&preactionid=51f06216-2870-4018-95d0-e7b451ce1d5e",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "海尔智家股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CCL1350788430J41034608704.htm?refcode=4021&srccode=402101&preactionid=71ff0531-cc5e-418b-b394-5ee2260a8516",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "美的集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000175860J40968926615.htm?refcode=4021&srccode=402101&preactionid=cc61b368-7f69-4239-8d63-4e23bf4e70d4",
+   "keywords": [
+    "夜班"
+   ],
+   "raw_score": -0.3,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "美的集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000175860J40968926615.htm?refcode=4021&srccode=402101&preactionid=8e8d5285-ede0-4a55-a0c4-0a08c4b0ba79",
+   "keywords": [
+    "夜班"
+   ],
+   "raw_score": -0.3,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "美的集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000175860J40968924215.htm?refcode=4021&srccode=402101&preactionid=cc61b368-7f69-4239-8d63-4e23bf4e70d4",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "美的集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000175860J40968924115.htm?refcode=4021&srccode=402101&preactionid=cc61b368-7f69-4239-8d63-4e23bf4e70d4",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "美的集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000175860J40968924015.htm?refcode=4021&srccode=402101&preactionid=cc61b368-7f69-4239-8d63-4e23bf4e70d4",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "美的集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000175860J40968924115.htm?refcode=4021&srccode=402101&preactionid=8e8d5285-ede0-4a55-a0c4-0a08c4b0ba79",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "美的集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000175860J40968923915.htm?refcode=4021&srccode=402101&preactionid=8e8d5285-ede0-4a55-a0c4-0a08c4b0ba79",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "美的集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000175860J40968924015.htm?refcode=4021&srccode=402101&preactionid=8e8d5285-ede0-4a55-a0c4-0a08c4b0ba79",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "海信视像科技股份有限公司",
+   "source_type": "review",
+   "url": "https://zhuanlan.zhihu.com/p/150716798",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "海信视像科技股份有限公司",
+   "source_type": "review",
+   "url": "https://www.nowcoder.com/discuss/630890850469371904",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "海信视像科技股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://ailegal.baidu.com/legalarticle/qadetail?id=df54c0862232ee241119",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "海信视像科技股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.douyin.com/search/%E6%B5%B7%E4%BF%A1%E5%8A%A0%E7%8F%AD%E6%83%85%E5%86%B5",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "海信视像科技股份有限公司",
+   "source_type": "review",
+   "url": "https://www.zhihu.com/question/57613509",
+   "keywords": [
+    "加班费",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "海信视像科技股份有限公司",
+   "source_type": "review",
+   "url": "https://www.nowcoder.com/discuss/391535257072177152",
+   "keywords": [
+    "加班费",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "海信视像科技股份有限公司",
+   "source_type": "review",
+   "url": "https://www.zhihu.com/question/391603063",
+   "keywords": [
+    "大小周",
+    "加班"
+   ],
+   "raw_score": -1.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "TCL科技集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000050460J40674724002.htm?refcode=4021&srccode=402101&preactionid=13810d8a-7bd0-4df1-b0b1-659d6bee3311",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "TCL科技集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000050460J40674724002.htm?refcode=4021&srccode=402101&preactionid=7e9eb1af-9b7c-4539-86df-3613e031e836",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江苏泊尔股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.10100.com/article/88336210",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江苏泊尔股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://interviewasssistant.com/zh/blog/company-work-schedule-2026",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江苏泊尔股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.zhipin.com/job_detail/cae4aef3109a6c4b03N72t60FFBT.html",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江苏泊尔股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.10100.com/article/90793986",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江苏泊尔股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.douyin.com/search/%E8%8B%8F%E6%B3%8A%E5%B0%94%E5%8F%8C%E4%BC%91%E5%90%97",
+   "keywords": [
+    "双休",
+    "两班倒"
+   ],
+   "raw_score": 1.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江苏泊尔股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.hotjob.cn/wt/suporcw/web/index?brandCode=1",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "九阳股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.qcc.com/firm/07b2a6e3dbb66564c62ab4a68dd65e60.html",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "九阳股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.joyoung.com/introduce/about/",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "宁波方太厨具有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.baike.com/wikiid/5679133889831553493?source=search",
+   "keywords": [
+    "996"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "宁波方太厨具有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.fotile.com/brand/about.html",
+   "keywords": [
+    "996"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "百度在线网络技术(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC597887230J40906457115.htm?refcode=4021&srccode=402101&preactionid=962236cd-7c9a-407e-a019-a101166b234b",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "百度在线网络技术(北京)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC597887230J40906475815.htm?refcode=4021&srccode=402101&preactionid=962236cd-7c9a-407e-a019-a101166b234b",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "北京字节跳动科技有限公司",
+   "source_type": "review",
+   "url": "https://zhuanlan.zhihu.com/p/1920437819974878298",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "北京字节跳动科技有限公司",
+   "source_type": "review_promo",
+   "url": "https://aiqicha.baidu.com/details/ugknowledge?id=e7a3ad9087091ea29cd3e04a33c0d84c",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "北京字节跳动科技有限公司",
+   "source_type": "review",
+   "url": "https://www.zhihu.com/question/471197919",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "北京字节跳动科技有限公司",
+   "source_type": "review_promo",
+   "url": "https://m.thepaper.cn/newsDetail_forward_13525871",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "新浪网技术(中国)有限公司",
+   "source_type": "review_promo",
+   "url": "https://apps.weibo.com/3158834234/8s2qevYU",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "北京趣拿信息技术有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC143301290J40545117105.htm?refcode=4021&srccode=402101&preactionid=40986d6a-4af5-4ef1-b0bb-4b23d6e02967",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "北京趣拿信息技术有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC143301290J40856541505.htm?refcode=4021&srccode=402101&preactionid=40986d6a-4af5-4ef1-b0bb-4b23d6e02967",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "同程网络科技股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC141685250J40879933405.htm?refcode=4021&srccode=402101&preactionid=5c97ef9e-045b-48f9-ab70-d260134c4a6a",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "同程网络科技股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC141685250J40875648005.htm?refcode=4021&srccode=402101&preactionid=5c97ef9e-045b-48f9-ab70-d260134c4a6a",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "同程网络科技股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC141685250J40865165105.htm?refcode=4021&srccode=402101&preactionid=5c97ef9e-045b-48f9-ab70-d260134c4a6a",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "同程网络科技股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC141685250J40876203905.htm?refcode=4021&srccode=402101&preactionid=5c97ef9e-045b-48f9-ab70-d260134c4a6a",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "同程网络科技股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC141685250J40888422405.htm?refcode=4021&srccode=402101&preactionid=5c97ef9e-045b-48f9-ab70-d260134c4a6a",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "同程网络科技股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC141685250J40886952205.htm?refcode=4021&srccode=402101&preactionid=5c97ef9e-045b-48f9-ab70-d260134c4a6a",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "同程网络科技股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC141685250J40892486105.htm?refcode=4021&srccode=402101&preactionid=5c97ef9e-045b-48f9-ab70-d260134c4a6a",
+   "keywords": [
+    "夜班",
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.3,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "顺丰速运有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC131486150J40888011014.htm?refcode=4021&srccode=402101&preactionid=177d02a3-274f-40ff-a55e-1e5f91eca827",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "中通快递股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC542783320J40969135215.htm?refcode=4021&srccode=402101&preactionid=44df53e2-29f2-4c24-936d-862707398776",
+   "keywords": [
+    "夜班"
+   ],
+   "raw_score": -0.3,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "中通快递股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC542783320J40956790915.htm?refcode=4021&srccode=402101&preactionid=44df53e2-29f2-4c24-936d-862707398776",
+   "keywords": [
+    "夜班"
+   ],
+   "raw_score": -0.3,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "中通快递股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC542783320J40904557115.htm?refcode=4021&srccode=402101&preactionid=44df53e2-29f2-4c24-936d-862707398776",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "中通快递股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC542783320J40944946115.htm?refcode=4021&srccode=402101&preactionid=44df53e2-29f2-4c24-936d-862707398776",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "中通快递股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC542783320J40909875315.htm?refcode=4021&srccode=402101&preactionid=44df53e2-29f2-4c24-936d-862707398776",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "中通快递股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC542783320J40904727915.htm?refcode=4021&srccode=402101&preactionid=44df53e2-29f2-4c24-936d-862707398776",
+   "keywords": [
+    "夜班",
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.3,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "申通快递股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC217586620J41019477102.htm?refcode=4021&srccode=402101&preactionid=5f4bf47c-3b0f-41ba-9d43-8aad7646f0fe",
+   "keywords": [
+    "三班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "德邦物流股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC156976020J40826035016.htm?refcode=4021&srccode=402101&preactionid=41447071-414b-4083-8520-235c472d1851",
+   "keywords": [
+    "夜班"
+   ],
+   "raw_score": -0.3,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "比亚迪股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC132962990J40966890602.htm?refcode=4021&srccode=402101&preactionid=6ba32e78-e0fe-4420-8489-d0a48993e235",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "比亚迪股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC132962990J41029595402.htm?refcode=4021&srccode=402101&preactionid=6ba32e78-e0fe-4420-8489-d0a48993e235",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "比亚迪股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC132962990J41024375002.htm?refcode=4021&srccode=402101&preactionid=6ba32e78-e0fe-4420-8489-d0a48993e235",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "比亚迪股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC132962990J41029592502.htm?refcode=4021&srccode=402101&preactionid=6ba32e78-e0fe-4420-8489-d0a48993e235",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "比亚迪股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC132962990J41026237202.htm?refcode=4021&srccode=402101&preactionid=6ba32e78-e0fe-4420-8489-d0a48993e235",
+   "keywords": [
+    "做六休一",
+    "月休四天"
+   ],
+   "raw_score": -4.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "长城汽车股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120341430J40895142105.htm?refcode=4021&srccode=402101&preactionid=877ab804-5797-4df5-a19e-4235a52022c7",
+   "keywords": [
+    "加班费",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "长城汽车股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120341430J40891677605.htm?refcode=4021&srccode=402101&preactionid=877ab804-5797-4df5-a19e-4235a52022c7",
+   "keywords": [
+    "夜班",
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.3,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "长城汽车股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120341430J40894890205.htm?refcode=4021&srccode=402101&preactionid=877ab804-5797-4df5-a19e-4235a52022c7",
+   "keywords": [
+    "加班费",
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "特斯拉(上海)有限公司",
+   "source_type": "review_promo",
+   "url": "https://aiqicha.baidu.com/details/ugknowledge?id=25649eb63c4c7fa35e3d9e8f387ebda8",
+   "keywords": [
+    "双休",
+    "有双休"
+   ],
+   "raw_score": 3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "特斯拉(上海)有限公司",
+   "source_type": "review",
+   "url": "https://tieba.baidu.com/p/9248958164",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "特斯拉(上海)有限公司",
+   "source_type": "review_promo",
+   "url": "https://ask.zol.com.cn/x/19352124.html",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "特斯拉(上海)有限公司",
+   "source_type": "review",
+   "url": "https://www.zhihu.com/question/42070596",
+   "keywords": [
+    "双休",
+    "加班"
+   ],
+   "raw_score": 1.0,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "特斯拉(上海)有限公司",
+   "source_type": "review",
+   "url": "https://zhuanlan.zhihu.com/p/375366290",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "特斯拉(上海)有限公司",
+   "source_type": "review",
+   "url": "https://tieba.baidu.com/p/7456376144",
+   "keywords": [
+    "加班费",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "特斯拉(上海)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC532432020J40837000316.htm?refcode=4021&srccode=402101&preactionid=1f9c2711-5a80-4467-b247-21857f46704f",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "晶科能源股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC223723910J40874214411.htm?refcode=4021&srccode=402101&preactionid=f3632696-700e-4721-b6d5-4651b7181a1e",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "晶科能源股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC223723910J40875028811.htm?refcode=4021&srccode=402101&preactionid=f3632696-700e-4721-b6d5-4651b7181a1e",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "review",
+   "url": "https://www.zhihu.com/question/348596827",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "review",
+   "url": "https://www.zhihu.com/question/566047215",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "review",
+   "url": "https://zhuanlan.zhihu.com/p/652153826",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "review",
+   "url": "https://www.nowcoder.com/discuss/618508006812069888",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120598170J40539080606.htm?refcode=4021&srccode=402101&preactionid=7f578ff1-47b9-42ef-a9f0-9a2c83c7c969",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "review",
+   "url": "https://tieba.baidu.com/p/5538263898",
+   "keywords": [
+    "双休",
+    "单休",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "review",
+   "url": "https://www.nowcoder.com/feed/main/detail/ca036c7081e7476a876918eec60e2e7d",
+   "keywords": [
+    "加班费",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "review",
+   "url": "https://tieba.baidu.com/p/6627890105",
+   "keywords": [
+    "加班费",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.9,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120598170J40800481006.htm?refcode=4021&srccode=402101&preactionid=7f578ff1-47b9-42ef-a9f0-9a2c83c7c969",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120598170J40801374106.htm?refcode=4021&srccode=402101&preactionid=7f578ff1-47b9-42ef-a9f0-9a2c83c7c969",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120598170J40801374006.htm?refcode=4021&srccode=402101&preactionid=7f578ff1-47b9-42ef-a9f0-9a2c83c7c969",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "阳光电源股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120598170J40801373906.htm?refcode=4021&srccode=402101&preactionid=7f578ff1-47b9-42ef-a9f0-9a2c83c7c969",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "内蒙古伊利实业集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000593040J40878759401.htm?refcode=4021&srccode=402101&preactionid=ad2d45a1-291d-446c-85cd-957ca562064f",
+   "keywords": [
+    "三班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "康师傅方便面投资(中国)有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC400480410J40822456116.htm?refcode=4021&srccode=402101&preactionid=7005a536-81f8-4f17-9a43-7da2648e1963",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江古茗科技有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC813352870J40958282508.htm?refcode=4021&srccode=402101&preactionid=6390e3dd-2704-43b5-9ea2-d20abf07282d",
+   "keywords": [
+    "周末双休",
+    "双休",
+    "加班费",
+    "加班"
+   ],
+   "raw_score": 2.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江古茗科技有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC813352870J40958297108.htm?refcode=4021&srccode=402101&preactionid=6390e3dd-2704-43b5-9ea2-d20abf07282d",
+   "keywords": [
+    "周末双休",
+    "双休",
+    "加班费",
+    "加班"
+   ],
+   "raw_score": 2.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江古茗科技有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC813352870J40962452808.htm?refcode=4021&srccode=402101&preactionid=6390e3dd-2704-43b5-9ea2-d20abf07282d",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江古茗科技有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC813352870J40962452708.htm?refcode=4021&srccode=402101&preactionid=6390e3dd-2704-43b5-9ea2-d20abf07282d",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "东阿阿胶股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC120758820J40729868306.htm?refcode=4021&srccode=402101&preactionid=3fca33da-5fa9-4abd-9d63-6a4b76408799",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "仁和药业股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC188537410J40888475709.htm?refcode=4021&srccode=402101&preactionid=6920dfa9-b80a-4f8e-822c-f0620c9f8e68",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "仁和药业股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC188537410J40683952909.htm?refcode=4021&srccode=402101&preactionid=6920dfa9-b80a-4f8e-822c-f0620c9f8e68",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "浙江森马服饰股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://www.semir.com/new/",
+   "keywords": [
+    "996"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "广博集团股份有限公司",
+   "source_type": "review_promo",
+   "url": "http://gb.guangboworld.com/home.html",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "红星美凯龙家居集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC140664800J40956917108.htm?refcode=4021&srccode=402101&preactionid=2baaddd4-a10a-46b2-9484-6b4b8c0b264b",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "红星美凯龙家居集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC140664800J40514892508.htm?refcode=4021&srccode=402101&preactionid=2baaddd4-a10a-46b2-9484-6b4b8c0b264b",
+   "keywords": [
+    "加班费",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "三一重工股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CCL1233195390J40853223211.htm?refcode=4021&srccode=402101&preactionid=93d68247-b0c7-48f8-86c8-e4c5b72b1376",
+   "keywords": [
+    "加班补贴",
+    "加班"
+   ],
+   "raw_score": -1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "歌尔股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC842621280J40905486713.htm?refcode=4021&srccode=402101&preactionid=a0143f7d-bb80-4709-b803-eb996fdbc968",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "歌尔股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC842621280J40903660713.htm?refcode=4021&srccode=402101&preactionid=a0143f7d-bb80-4709-b803-eb996fdbc968",
+   "keywords": [
+    "做六休一",
+    "月休四天"
+   ],
+   "raw_score": -4.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "京东方科技集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC161678510J40868961314.htm?refcode=4021&srccode=402101&preactionid=293a9d7c-c679-411e-8423-e514946d096b",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "京东方科技集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC161678510J40868956814.htm?refcode=4021&srccode=402101&preactionid=293a9d7c-c679-411e-8423-e514946d096b",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "京东方科技集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC161678510J40874450614.htm?refcode=4021&srccode=402101&preactionid=293a9d7c-c679-411e-8423-e514946d096b",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "京东方科技集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC161678510J40868951814.htm?refcode=4021&srccode=402101&preactionid=293a9d7c-c679-411e-8423-e514946d096b",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "京东方科技集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC161678510J40887850014.htm?refcode=4021&srccode=402101&preactionid=293a9d7c-c679-411e-8423-e514946d096b",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "京东方科技集团股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC161678510J40887849714.htm?refcode=4021&srccode=402101&preactionid=293a9d7c-c679-411e-8423-e514946d096b",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "京东方科技集团股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://quote.eastmoney.com/sz000725.html",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "京东方科技集团股份有限公司",
+   "source_type": "review_promo",
+   "url": "https://xueqiu.com/S/SZ000725",
+   "keywords": [
+    "007"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-11"
+  },
+  {
+   "company_name": "佛山市海天调味食品股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC134857540J40889470309.htm?refcode=4021&srccode=402101&preactionid=9b14520f-7a6d-4c49-a5a0-b3a1351e422d",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "佛山市海天调味食品股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC221070010J40714215314.htm?refcode=4021&srccode=402101&preactionid=44376146-c195-49a8-87fd-0ff6cf831c1c",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "佛山市海天调味食品股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC221070010J40859295214.htm?refcode=4021&srccode=402101&preactionid=44376146-c195-49a8-87fd-0ff6cf831c1c",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "李锦记(新会)食品有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC136071350J40875749707.htm?refcode=4021&srccode=402101&preactionid=8be304c0-e6c1-45c7-a861-faae0904a39f",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "李锦记(新会)食品有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC860972440J40928772012.htm?refcode=4021&srccode=402101&preactionid=f94146bf-7fa8-455b-b4fd-87dbfcca6815",
+   "keywords": [
+    "两班倒"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "李锦记(新会)食品有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC136071350J40870923507.htm?refcode=4021&srccode=402101&preactionid=8be304c0-e6c1-45c7-a861-faae0904a39f",
+   "keywords": [
+    "月休四天"
+   ],
+   "raw_score": -2.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "元气森林(北京)食品科技集团有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC812921020J40888877409.htm?refcode=4021&srccode=402101&preactionid=611798b8-24b8-46a2-b13f-030fa2dc2d4e",
+   "keywords": [
+    "单休"
+   ],
+   "raw_score": -2.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "红牛维他命饮料有限公司",
+   "source_type": "review",
+   "url": "https://zhuanlan.zhihu.com/p/18624230127",
+   "keywords": [
+    "加班"
+   ],
+   "raw_score": -0.5,
+   "weight": 0.9,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40853434012.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40855911312.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40868192812.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40853434512.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40932470412.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40931256912.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40937168612.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40937166712.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40937166412.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40930134412.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "双休",
+    "加班"
+   ],
+   "raw_score": 1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40930134312.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "双休",
+    "加班"
+   ],
+   "raw_score": 1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "中国平安保险(集团)股份有限公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC000204810J40930134212.htm?refcode=4021&srccode=402101&preactionid=1109c06e-3f7d-49e4-a426-6a5745d578e9",
+   "keywords": [
+    "双休",
+    "加班"
+   ],
+   "raw_score": 1.0,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "泰康人寿保险有限责任公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC428807230J40818941207.htm?refcode=4021&srccode=402101&preactionid=09e4a4da-678a-4c45-9615-e3add9b953b2",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "泰康人寿保险有限责任公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC428807230J40818928807.htm?refcode=4021&srccode=402101&preactionid=09e4a4da-678a-4c45-9615-e3add9b953b2",
+   "keywords": [
+    "周末双休",
+    "双休"
+   ],
+   "raw_score": 3.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "泰康人寿保险有限责任公司",
+   "source_type": "job_post",
+   "url": "http://www.zhaopin.com/jobdetail/CC428807230J40815883707.htm?refcode=4021&srccode=402101&preactionid=09e4a4da-678a-4c45-9615-e3add9b953b2",
+   "keywords": [
+    "双休"
+   ],
+   "raw_score": 1.5,
+   "weight": 0.4,
+   "collected_at": "2026-09-12"
+  },
+  {
+   "company_name": "泰康人寿保险有限责任公司",
+   "source_type": "review_promo",
+   "url": "https://aiqicha.baidu.com/detail/compinfo?pid=99131026085325",
+   "keywords": [
+    "996"
+   ],
+   "raw_score": -3.0,
+   "weight": 0.1,
+   "collected_at": "2026-09-12"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Info.plist 合并模板（Xcode 建工程后把以下键合并进工程自动生成的 Info.plist）：
+
+  1. ApiBaseURL          —— 后端地址。Debug 留 localhost；Release 改 https://正式域名
+  2. NSAppTransportSecurity —— 仅允许本地明文（模拟器联调用）；上线 https 域名后可整段删除
+-->
+<plist version="1.0">
+<dict>
+  <key>ApiBaseURL</key>
+  <string>http://127.0.0.1:8000</string>
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
+  </dict>
+</dict>
+</plist>

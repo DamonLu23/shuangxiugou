@@ -1,0 +1,51 @@
+name: data-refresh
+on:
+  schedule:
+    - cron: '30 20 * * 0'        # 每周日 20:30 UTC
+  workflow_dispatch: {}          # 也可手动触发
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r backend/requirements.txt
+          pip install playwright
+          python -m playwright install chromium --with-deps
+
+      - name: Run collection pipeline
+        run: |
+          cd crawler
+          python -u pipeline.py || echo "pipeline 部分失败，继续导出已有数据"
+
+      - name: Verify data
+        run: |
+          cd crawler
+          python verify.py || echo "verify 有未达标项，数据仍导出供人工检查"
+
+      - name: Export open-source artifacts
+        run: |
+          cd backend
+          python scripts/export_data.py
+
+      - name: Open data PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore(data): 每周数据刷新'
+          branch: data-refresh
+          delete-branch: true
+          title: '数据周更（自动生成）'
+          body: |
+            自动生成的数据更新 PR，由维护者人工抽查后合并。
+            - 检查点：白名单数量是否合理、等级分布是否突变、证据链接是否有效。

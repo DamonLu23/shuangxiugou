@@ -1,0 +1,27 @@
+# === Python ===
+backend/.venv/
+crawler/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# === 数据中间产物（开源只提交 data/ 下的 JSON/CSV 制品）===
+data/*.db
+
+# === 密钥/本地配置 ===
+.env
+backend/.env
+crawler/.env
+*.local
+
+# === 前端 ===
+web/node_modules/
+web/dist/
+
+# === iOS（保留源码但已弃用）===
+ios/DerivedData/
+xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# === 系统 ===
+.DS_Store
