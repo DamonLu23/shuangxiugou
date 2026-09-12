@@ -4,9 +4,10 @@
 
 「双休购」是一个**白名单模式**的开源项目：只推荐严格执行双休（周末两天休息）的企业及其在招岗位、代表商品。不展示也不评价任何企业的负面信息。
 
-- 求职搜索：搜岗位 → 只展示双休企业的在招岗位
-- 好物目录：搜品类 → 只推荐双休企业的代表商品
-- 数据透明：所有结论附公开证据链接，可自查、可复核、可申诉
+- **求职搜索**：搜岗位 → 只展示双休企业的在招岗位（智联采集 + 用户上报，周更）
+- **好物目录**：搜品类 → 只推荐双休企业的代表商品（社区维护）
+- **数据透明**：所有结论附公开证据链接，可自查、可复核、可申诉（48h）
+- **前端网站**（`web/`）：Vue 3 白名单站，部署见 [web/DEPLOY.md](web/DEPLOY.md)
 
 ## 白名单承诺
 
@@ -24,7 +25,7 @@
 | `companies.json` | 白名单企业档案 | 等级 + 置信度 + 证据链接，对外唯一权威 |
 | `companies_all.json` | 全量档案（含 L3~L6） | 仅供本地研究/复现，禁止对外展示 |
 | `evidences.json` | 证据明细 | 链接 + 关键词 + 日期，不存原文 |
-| `jobs.json` | 白名单企业在招岗位快照 | 状态以招聘平台为准 |
+| `jobs.json` | 白名单企业在招岗位快照（301+） | `collect_jobs.py` 周更 |
 | `goods.csv` | 好物目录 | 社区 PR 维护（`company,品类,商品,官方链接`） |
 
 ### 等级体系
@@ -64,12 +65,24 @@ cd backend && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 ```
 data/       开源数据包（周更）
-crawler/    采集器 + 评分算法 + 校验
-backend/    FastAPI（求职/好物/档案/申诉 API）
-web/        白名单网站 SPA（Vue 3 + Vite）
+crawler/    采集器（证据 + 岗位）+ 评分算法 + 校验
+backend/    FastAPI（求职/好物/档案/申诉/UGC 审核 API）
+web/        白名单网站 SPA（Vue 3 + Vite，见 DEPLOY.md）
 docs/       产品/资质/验证记录
 ios/        （已弃用）早期 SwiftUI 原型，保留参考
 ```
+
+## API 一览
+
+| 接口 | 说明 |
+|---|---|
+| `GET /api/jobs/search?q=&city=` | 求职搜索（仅白名单 L1/L2 企业岗位） |
+| `POST /api/jobs/report` | 用户上报岗位（审核后展示） |
+| `GET /api/goods/search?q=` | 好物目录搜索（仅白名单企业商品） |
+| `GET /api/companies` / `{id}` | 企业榜 / 白名单企业档案（含证据链接） |
+| `POST /api/companies/{id}/appeal` | 企业申诉（48h 承诺） |
+| `POST /api/companies/{id}/report` | 用户补充证据（审核队列） |
+| `GET/POST /api/admin/*` | 管理端（X-Admin-Token 鉴权） |
 
 ## License
 

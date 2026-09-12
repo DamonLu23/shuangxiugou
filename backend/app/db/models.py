@@ -106,8 +106,26 @@ class Job(Base):
     tags = Column(Text, default="")          # 福利标签（双休/五险一金…）
     salary = Column(String(64), default="")  # 列表页薪资常被遮掩，存文本
     url = Column(Text)                       # 岗位原始链接
-    source = Column(String(16), default="zhaopin")
+    source = Column(String(16), default="zhaopin")  # zhaopin / ugc
     collected_at = Column(Date)
     active = Column(Boolean, default=True, index=True)
+
+    company = relationship("Company")
+
+
+class Appeal(Base):
+    """企业申诉（白名单更正/删除请求，48h 处理承诺）。"""
+
+    __tablename__ = "appeals"
+
+    id = Column(Integer, primary_key=True)
+    company_id = Column(Integer, ForeignKey("companies.id"), index=True)
+    contact = Column(String(128), default="")       # 联系人/邮箱（可空）
+    reason = Column(Text, nullable=False)           # 申诉事由
+    evidence_url = Column(String(512), default="")  # 官方制度/合同等公开链接
+    status = Column(String(16), default="open")     # open / resolved / rejected
+    handler_note = Column(Text, default="")
+    created_at = Column(DateTime, default=datetime.utcnow)
+    handled_at = Column(DateTime, nullable=True)
 
     company = relationship("Company")

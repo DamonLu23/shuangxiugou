@@ -34,11 +34,30 @@ _JOBS_ITEMS_JS = """() => {
     document.querySelectorAll('.job-onlinelist__jobs__item').forEach(el => {
         const a = el.querySelector('.job-onlinelist__jobs__info__href');
         const welfare = Array.from(el.querySelectorAll('.job-onlinelist__jobs__welfare__txt')).map(x => x.textContent.trim());
+        const salaryEl = el.querySelector('.job-onlinelist__jobs__info__salary');
         if (!a) return;
-        out.push({ title: a.textContent.trim(), href: a.href, welfare });
+        out.push({ title: a.textContent.trim(), href: a.href, welfare,
+                   salary: salaryEl ? salaryEl.textContent.trim() : '',
+                   city: '', text: el.innerText.replace(/\\n+/g, ' ').slice(0, 500) });
     });
     return out;
 }"""
+# 常见城市短名（职位列表行首 token，启发式提取，可扩充）
+CITY_TOKENS = {
+    "北京", "上海", "广州", "深圳", "杭州", "成都", "武汉", "西安", "苏州", "南京",
+    "天津", "重庆", "长沙", "郑州", "青岛", "宁波", "东莞", "佛山", "合肥", "厦门",
+    "福州", "济南", "昆明", "大连", "沈阳", "哈尔滨", "石家庄", "南昌", "贵阳",
+    "南宁", "太原", "兰州", "长春", "乌鲁木齐", "海口", "呼和浩特", "无锡", "温州",
+    "常州", "嘉兴", "佛山", "中山", "珠海", "惠州", "徐州", "唐山",
+}
+
+
+def extract_city(item_text: str, fallback: str = "") -> str:
+    """从岗位卡片文本启发式提取城市（卡片 text 里的城市 token 优先）。"""
+    for tok in CITY_TOKENS:
+        if f"{tok} " in item_text or item_text.endswith(tok):
+            return tok
+    return fallback
 
 _UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
        "(KHTML, like Gecko) Chrome/148.0 Safari/537.36")
@@ -177,3 +196,35 @@ class ZhaopinSource(Source):
                 raw_score=score,
             ))
         return evs
+
+    async def collect_jobs(self, keyword: str, seen_uids: Optional[set] = None) -> list[dict]:
+        """(求职 M1) 采集某公司所有在招岗位，返回原始 dict，不做打分。
+
+        结构: [{title, company_raw, url, welfare, salary, city}]
+        """
+        page = await self._new_page()
+        try:
+            companies = await self._collect_matched_companies(page, keyword)
+            jobs: list[dict] = []
+            for company in companies[: self.max_company_pages]:
+                try:
+                    await self._goto(page, company["url"])
+                    items = await page.evaluate(_JOBS_ITEMS_JS)
+                except Exception as e:
+                    print(f"    [智联公司页失败] {keyword}/{company['name']}: {type(e).__name__}")
+                    continue
+                for it in items:
+                    jobs.append({
+                        "title": it["title"],
+                        "company_raw": company["name"],
+                        "company_url": company["url"],
+                        "welfare": it["welfare"],
+                        "salary": it["salary"],
+                        "city": extract_city(it.get("text", ""), company["name"]),
+                        "url": it["href"] or company["url"],
+                    })
+            return jobs
+        finally:
+            ctx = page.context
+            await page.close()
+            await ctx.close()

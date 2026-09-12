@@ -1,10 +1,9 @@
 import time
-from collections import defaultdict, deque
 from datetime import date, datetime
 from typing import Optional
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request
-from sqlalchemy import func, select
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..config import settings
@@ -12,6 +11,7 @@ from ..db.models import Company, Evidence, LEVEL_NAMES, UgcReport
 from ..db.session import get_db
 from ..services.levels import recalc_company, weight_for
 from ..services.signalkeys import score_job_description
+from .deps import check_rate_limit, require_admin
 
 router = APIRouter(prefix="/api")
 
@@ -23,27 +23,6 @@ UGC_SOURCE_LABELS = {
     "ugc_other": "其他",
 }
 
-# UGC 上报限流：每 IP 每小时 5 条（内存滑窗，单实例够用；多实例换 Redis）
-RATE_LIMIT = 5
-RATE_WINDOW = 3600
-_report_times: dict[str, deque] = defaultdict(deque)
-
-
-def check_rate_limit(ip: str):
-    now = time.monotonic()
-    window = _report_times[ip]
-    while window and now - window[0] > RATE_WINDOW:
-        window.popleft()
-    if len(window) >= RATE_LIMIT:
-        raise HTTPException(429, "提交过于频繁，请稍后再试（每小时最多 5 条）")
-    window.append(now)
-
-
-def require_admin(x_admin_token: Optional[str] = Header(None)):
-    if x_admin_token != settings.admin_token:
-        raise HTTPException(403, "无管理权限")
-    return True
-
 
 @router.get("/companies")
 async def company_list(
@@ -52,13 +31,13 @@ async def company_list(
     db: Session = Depends(get_db),
 ):
     """企业档案列表（等级筛选 + 置信度排序）。"""
-    stmt = select(Company.name, Company.level, Company.confidence, Company.disputed)
+    stmt = select(Company.id, Company.name, Company.level, Company.confidence, Company.disputed)
     if level:
         stmt = stmt.where(Company.level == level)
     stmt = stmt.order_by(Company.level, Company.confidence.desc()).limit(limit)
     rows = db.execute(stmt).all()
     return [{
-        "name": r.name, "level": r.level,
+        "id": r.id, "name": r.name, "level": r.level,
         "level_name": LEVEL_NAMES.get(r.level, "待验证"),
         "confidence": round(r.confidence, 3),
         "disputed": bool(r.disputed),

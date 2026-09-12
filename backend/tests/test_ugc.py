@@ -36,8 +36,8 @@ def client():
         finally:
             s.close()
 
-    from app.routers import company as company_mod
-    company_mod._report_times.clear()  # 重置限流状态
+    from app.routers import deps
+    deps._report_times.clear()  # 重置限流状态
     app.dependency_overrides[get_db] = override_get_db
     yield {"tc": TestClient(app), "engine": e}
     app.dependency_overrides.pop(get_db, None)
