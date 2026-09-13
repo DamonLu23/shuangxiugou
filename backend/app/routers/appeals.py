@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 
 from ..db.models import Appeal, Company
 from ..db.session import get_db
+from ..services.github_feedback import create_issue
 from .deps import require_admin
 
 router = APIRouter(prefix="/api")
@@ -19,7 +20,8 @@ async def create_appeal(company_id: int, payload: dict, db: Session = Depends(ge
     reason = (payload.get("reason") or "").strip()
     if len(reason) < 5:
         raise HTTPException(422, "reason 至少 5 字（说明为何需要更正/删除）")
-    if not db.get(Company, company_id):
+    company = db.get(Company, company_id)
+    if not company:
         raise HTTPException(404, "企业不存在")
 
     appeal = Appeal(
@@ -31,8 +33,17 @@ async def create_appeal(company_id: int, payload: dict, db: Session = Depends(ge
     )
     db.add(appeal)
     db.commit()
-    return {"ok": True, "appeal_id": appeal.id, "status": "open",
-            "message": "已受理，一般 48 小时内处理（见仓库 APPEAL.md）"}
+
+    issue_url = await create_issue("appeal", {
+        "company_name": company.name,
+        "appeal_type": payload.get("appeal_type", "更正信息"),
+        "reason": reason,
+        "evidence_url": payload.get("evidence_url", ""),
+        "contact": payload.get("contact", ""),
+    })
+    return {"ok": True, "appeal_id": appeal.id, "status": "open", "issue_url": issue_url,
+            "message": "已提交到维护者 Issue" if issue_url
+                       else "已受理，一般 48 小时内处理（见仓库 APPEAL.md）"}
 
 
 @router.get("/admin/appeals")

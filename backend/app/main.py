@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from .config import validate_runtime_config
 from .db.models import Brand
 from .db.session import engine
-from .routers import appeals, company, goods, jobs, search
+from .routers import appeals, company, feedback, goods, jobs, search
 from .services.brand import import_seed
 
 
@@ -30,6 +30,7 @@ app.include_router(company.router)
 app.include_router(jobs.router)
 app.include_router(goods.router)
 app.include_router(appeals.router)
+app.include_router(feedback.router)
 
 # 隐私政策页（App Store 审核需要可访问 URL：https://域名/privacy.html 或直接挂本路径）
 app.mount(

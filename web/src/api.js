@@ -42,6 +42,14 @@ export function reportJob(payload) {
   }).then(async (r) => ({ ok: r.ok, data: await r.json() }))
 }
 
+export function submitCorrection(payload) {
+  return fetch(`${BASE}/feedback/correction`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  }).then(async (r) => ({ ok: r.ok, data: await r.json() }))
+}
+
 export const LEVEL_NAMES = {
   1: '严格双休',
   2: '双休',

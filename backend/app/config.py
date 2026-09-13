@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     mall_mode: str = "mock"
     # debug=True 允许默认 admin_token；生产必须 False 且改密钥
     debug: bool = True
+    # 反馈 → GitHub Issue 无感通道（未配置则降级为本地队列）
+    github_token: str = ""
+    github_repo: str = "DamonLu23/shuangxiugou"
 
 
 settings = Settings()

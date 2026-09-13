@@ -11,6 +11,7 @@ const appealText = ref('')
 const appealContact = ref('')
 const appealUrl = ref('')
 const submittedMsg = ref('')
+const appealIssue = ref('')
 
 onMounted(async () => {
   try {
@@ -29,7 +30,12 @@ async function submitAppealForm() {
     contact: appealContact.value.trim(),
     evidence_url: appealUrl.value.trim(),
   })
-  submittedMsg.value = ok ? data.message : (data.detail || '提交失败')
+  if (ok) {
+    submittedMsg.value = data.message
+    appealIssue.value = data.issue_url || ''
+  } else {
+    submittedMsg.value = data.detail || '提交失败'
+  }
 }
 </script>
 
@@ -63,7 +69,10 @@ async function submitAppealForm() {
       </div>
       <button class="btn-green" style="margin-top:12px;" @click="submitAppealForm"
         :disabled="appealText.trim().length < 5">提交申诉</button>
-      <p v-if="submittedMsg" class="muted" style="margin-top:8px;">{{ submittedMsg }}</p>
+      <p v-if="submittedMsg" class="muted" style="margin-top:8px;">
+        {{ submittedMsg }}
+        <a v-if="appealIssue" :href="appealIssue" target="_blank" rel="noopener">（查看处理单）</a>
+      </p>
     </div>
 
     <p class="disclaimer">双休等级由公开渠道信息交叉验证生成，仅供参考。本页面仅展示白名单（L1/L2）企业。</p>

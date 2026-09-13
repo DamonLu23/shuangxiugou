@@ -12,6 +12,7 @@ from sqlalchemy.orm import Session
 
 from ..db.models import Company, Job, LEVEL_NAMES
 from ..db.session import get_db
+from ..services.github_feedback import create_issue
 from .deps import check_rate_limit, require_admin
 
 router = APIRouter(prefix="/api")
@@ -95,8 +96,17 @@ async def jobs_report(payload: dict, request: Request, db: Session = Depends(get
     )
     db.add(job)
     db.commit()
-    return {"ok": True, "job_id": job.id, "status": "pending",
-            "message": "已提交，审核通过且企业为白名单后展示"}
+
+    issue_url = await create_issue("job-report", {
+        "company_name": company_name,
+        "title": title,
+        "city": payload.get("city", ""),
+        "salary": payload.get("salary", ""),
+        "url": payload.get("url", ""),
+    })
+    return {"ok": True, "job_id": job.id, "status": "pending", "issue_url": issue_url,
+            "message": "已提交到维护者 Issue" if issue_url
+                       else "已提交，审核通过且企业为白名单后展示"}
 
 
 @router.get("/admin/jobs")
