@@ -1,6 +1,6 @@
 /* 自动生成：shuangxiugou 本地数据包（保守策略：仅白名单公开数据） */
 window.SXG_DATA = {
-  "generated_at": "2026-09-13T18:23:51Z",
+  "generated_at": "2026-09-13T18:49:27Z",
   "companies": [
     {
       "id": 6,

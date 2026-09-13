@@ -11,6 +11,7 @@ import asyncio
 import csv
 import json
 import sys
+from contextlib import nullcontext
 from datetime import date
 from pathlib import Path
 
@@ -24,8 +25,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
 from app.db.models import Base, Company, Evidence
 from app.services.levels import aggregate, weight_for
 
-from sources.bing_snippet import BingSnippetSource
-from sources.zhaopin import ZhaopinSource
+from health import new_health, record, write_report
+from sources.registry import load_config, make_evidence_sources
 
 DATA_DIR = Path(__file__).resolve().parents[1]
 SEED_CSV = DATA_DIR / "data" / "companies" / "seed.csv"
@@ -115,23 +116,33 @@ async def main():
         if args.limit:
             companies = companies[: args.limit]
 
-    print(f"[M1] 开始采集 {len(companies)} 家企业（共享浏览器模式）")
+    print(f"[M1] 开始采集 {len(companies)} 家企业（共享浏览器 + 注册表源）")
     all_evs = []
-    bing = BingSnippetSource()
-    zhaopin = ZhaopinSource(city_id="530")
+    cfg = load_config()
+    sources = make_evidence_sources(cfg)
+    print(f"[M1] 启用证据源: {[name for name, _ in sources]}")
+    health = new_health()
     loop = asyncio.get_event_loop()
     t0 = loop.time()
-    async with zhaopin.launch_shared():
+
+    # 需要浏览器的源（智联）共享同一浏览器实例；无浏览器源时用空上下文
+    browser_owner = next((s for _, s in sources if hasattr(s, "launch_shared")), None)
+    if browser_owner is not None:
+        ctx = browser_owner.launch_shared()
+    else:
+        ctx = nullcontext()
+
+    async with ctx:
         for i, c in enumerate(companies, 1):
             evs = []
-            try:
-                evs += await zhaopin.fetch(c["key"])
-            except Exception as e:
-                print(f"  [zhaopin 失败] {c['key']}: {type(e).__name__}: {str(e)[:100]}")
-            try:
-                evs += await bing.fetch(c["key"])
-            except Exception as e:
-                print(f"  [bing 失败] {c['key']}: {type(e).__name__}: {str(e)[:100]}")
+            for name, src in sources:
+                try:
+                    got = await src.fetch(c["key"])
+                    evs += got
+                    record(health, name, ok=True, items=len(got))
+                except Exception as e:
+                    record(health, name, ok=False)
+                    print(f"  [{name} 失败] {c['key']}: {type(e).__name__}: {str(e)[:100]}")
             evs = dedup_evidence(evs)
             all_evs += evs
             scores = sorted({e.raw_score for e in evs}, reverse=True)
@@ -140,6 +151,11 @@ async def main():
             t0 = loop.time()
             if i < len(companies):
                 await asyncio.sleep(args.politeness)
+
+    health_md = DATA_DIR / "data" / "source_health.md"
+    health_json = DATA_DIR / "data" / "local" / "source_health.json"
+    write_report(health, health_md, health_json)
+    print(f"[M1] 源健康报告: {health_md}")
 
     if args.json:
         json.dump([{

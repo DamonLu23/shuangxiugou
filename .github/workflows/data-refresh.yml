@@ -29,6 +29,11 @@ jobs:
           cd crawler
           python -u pipeline.py || echo "pipeline 部分失败，继续导出已有数据"
 
+      - name: Collect whitelist jobs
+        run: |
+          cd crawler
+          python -u collect_jobs.py || echo "岗位采集部分失败，继续导出已有数据"
+
       - name: Verify data
         run: |
           cd crawler
@@ -49,6 +54,13 @@ jobs:
           npm install --prefer-offline
           npm run local
 
+      - name: Compose PR body (source health reports)
+        run: |
+          mkdir -p data/local
+          { cat data/source_health.md 2>/dev/null || echo "（证据源报告缺失）"; echo; \
+            cat data/source_health_jobs.md 2>/dev/null || echo "（岗位源报告缺失）"; } \
+            > data/local/pr_body.md
+
       - name: Open data PR
         uses: peter-evans/create-pull-request@v6
         with:
@@ -56,7 +68,4 @@ jobs:
           branch: data-refresh
           delete-branch: true
           title: '数据周更（自动生成）'
-          body: |
-            自动生成的数据更新 PR，由维护者人工抽查后合并。
-            - 检查点：白名单数量是否合理、等级分布是否突变、证据链接是否有效、
-              本地版 bundle（web/local/dist）是否同步更新。
+          body-path: data/local/pr_body.md

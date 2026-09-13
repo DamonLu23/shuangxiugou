@@ -1,0 +1,11 @@
+{
+  "politeness_seconds": 1.5,
+  "evidence_sources": {
+    "zhaopin": { "enabled": true, "city_id": "530" },
+    "bing": { "enabled": true }
+  },
+  "job_sources": {
+    "zhaopin": { "enabled": true, "city_id": "530" },
+    "official": { "enabled": true, "config_csv": "data/company_job_sources.csv" }
+  }
+}

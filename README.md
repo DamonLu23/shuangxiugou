@@ -78,6 +78,17 @@ cd backend && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
+## 数据来源
+
+| 源 | 用途 | 权重 |
+|---|---|---|
+| 智联招聘（浏览器渲染） | 企业双休证据 + 岗位 | job_post 0.4 |
+| Bing 搜索片段 | 员工口碑 | review 0.9 / 软文 0.1 |
+| UGC 用户提交（审核制） | 证据 + 岗位 | 合同 1.0 / offer 0.9 / 其他 0.5 |
+| 企业官网（L1/L2 逐家配置） | 岗位（关闭自动移除） | —— |
+
+源开关与健康统计：`crawler/sources_config.json` + 周更报告；详见 [docs/sources.md](docs/sources.md)。
+
 ## 免责声明
 
 > 本项目的双休等级由公开招聘信息与公开讨论聚合而成，仅供参考，**不构成**对任何企业的法律评价。数据可能存在滞后或误差，请以企业官方信息为准。本项目为非商业开源项目，不对任何用法承担责任。
