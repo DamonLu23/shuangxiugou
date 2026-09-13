@@ -155,7 +155,7 @@ class TestAppeals:
 
 
 class TestGoods:
-    def test_goods_whitelist_only(self, client, tmp_path):
+    def test_goods_whitelist_only(self, client, tmp_path, monkeypatch):
         """好物目录：非白名单企业商品被过滤。"""
         from app.routers import goods as goods_mod
 
@@ -165,17 +165,13 @@ class TestGoods:
             w.writerow(["company_name", "category", "product", "official_link", "note"])
             w.writerow(["双休科技股份有限公司", "互联网", "双休云服务", "https://sxg.io", ""])
             w.writerow(["单休制造股份有限公司", "制造", "单休机床", "https://dx.io", ""])
-        goods_mod.GOODS_CSV = csv_path
-        try:
-            r = client.get("/api/goods/search", params={"q": "云"})
-            items = r.json()["items"]
-            assert len(items) == 1
-            assert items[0]["company_name"] == "双休科技股份有限公司"
-            assert items[0]["company_level"] == 1
+        monkeypatch.setattr(goods_mod, "GOODS_CSV", csv_path)
 
-            r2 = client.get("/api/goods/search", params={"q": "机床"})
-            assert r2.json()["total"] == 0
-        finally:
-            goods_mod.GOODS_CSV = goods_mod.GOODS_CSV  # 恢复由后续 fixture 内替换
-        object.__setattr__(goods_mod, "GOODS_CSV",
-                           Path(__file__).resolve().parents[2] / "data" / "goods.csv")
+        r = client.get("/api/goods/search", params={"q": "云"})
+        items = r.json()["items"]
+        assert len(items) == 1
+        assert items[0]["company_name"] == "双休科技股份有限公司"
+        assert items[0]["company_level"] == 1
+
+        r2 = client.get("/api/goods/search", params={"q": "机床"})
+        assert r2.json()["total"] == 0

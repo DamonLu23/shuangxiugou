@@ -13,6 +13,8 @@ LEVEL_NAMES = {
     6: "待验证",
 }
 
+WHITELIST_LEVELS = (1, 2)  # 对外展示级别（与 services.levels 保持一致）
+
 
 class Company(Base):
     __tablename__ = "companies"
@@ -42,21 +44,6 @@ class Brand(Base):
     verified = Column(Boolean, default=False)                # 人工校对标记
 
     company = relationship("Company", back_populates="brands")
-
-
-class Product(Base):
-    __tablename__ = "products"
-
-    id = Column(Integer, primary_key=True)
-    platform = Column(String(16), nullable=False)            # taobao / jd / pdd
-    item_id = Column(String(64), nullable=False)
-    title = Column(String(256), nullable=False)
-    image = Column(String(512))
-    price = Column(Float)
-    brand_name = Column(String(128), index=True)             # 标题提取/接口给的品牌
-    category = Column(String(64), index=True)
-    click_url = Column(Text)                                 # 联盟跳转链接
-    created_at = Column(DateTime, default=datetime.utcnow)
 
 
 class Evidence(Base):

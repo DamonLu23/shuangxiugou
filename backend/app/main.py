@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from .config import validate_runtime_config
 from .db.models import Brand
 from .db.session import engine
-from .routers import appeals, company, feedback, goods, jobs, search
+from .routers import appeals, company, feedback, goods, jobs
 from .services.brand import import_seed
 
 
@@ -24,8 +24,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title="双休购 API", version="0.2.0", lifespan=lifespan)
-app.include_router(search.router)
+app = FastAPI(title="双休购 API", version="0.3.0", lifespan=lifespan)
 app.include_router(company.router)
 app.include_router(jobs.router)
 app.include_router(goods.router)

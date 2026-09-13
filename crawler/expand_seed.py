@@ -30,6 +30,10 @@ def main():
     known_keys = {r["key"] for r in existing}
     known_names = {r["full_name"] for r in existing}
 
+    if not EXTRA.exists():
+        print(f"未找到 {EXTRA.name}（品牌扩编清单）。")
+        print("用法：创建 data/companies/seed_extra.csv（列：key,full_name,category）后重跑。")
+        return
     with open(EXTRA, encoding="utf-8") as f:
         extra = list(csv.DictReader(f))
 

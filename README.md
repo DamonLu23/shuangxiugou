@@ -90,7 +90,6 @@ crawler/    采集器（证据 + 岗位）+ 评分算法 + 校验
 backend/    FastAPI（求职/好物/档案/申诉/UGC 审核），可选自托管
 web/        双形态站点：SPA（Vite）+ 本地版（npm run local）
 docs/       产品/资质/验证记录
-ios/        （已弃用）早期 SwiftUI 原型，保留参考
 ```
 
 ## API 一览

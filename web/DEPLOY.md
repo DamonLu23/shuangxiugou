@@ -18,7 +18,6 @@ cd backend && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 export DEBUG=false
 export ADMIN_TOKEN="<强随机串>"
-export MALL_MODE=mock
 export DATABASE_URL=postgresql://user:pass@localhost/shuangxiugou   # 生产换 PG
 
 .venv/bin/python scripts/migrate.py

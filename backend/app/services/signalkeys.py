@@ -27,7 +27,7 @@ def score_job_description(text: str) -> tuple[float, list[str]]:
     """对文本按信号词打分，返回 (raw_score, hit_keywords)。
     「不加班/很少加班」等否定表达不触发「加班」负信号。"""
     cleaned = text
-    for pref in overtime_neg():
+    for pref in OVERTIME_NEGATIONS:
         cleaned = cleaned.replace(pref + "加班", "")
     raw = 0.0
     matched = []
@@ -41,7 +41,3 @@ def score_job_description(text: str) -> tuple[float, list[str]]:
             raw += s
             matched.append(kw)
     return raw, matched
-
-
-def overtime_neg():
-    return OVERTIME_NEGATIONS

@@ -15,13 +15,8 @@ from .deps import check_rate_limit, require_admin
 
 router = APIRouter(prefix="/api")
 
-# UGC 来源：校验用集合 / 展示用文案（解耦）
+# UGC 证据来源校验集合（纠错类走 /api/feedback/correction，不经此入口）
 UGC_SOURCE_TYPES = {"ugc_offer", "ugc_contract", "ugc_other"}
-UGC_SOURCE_LABELS = {
-    "ugc_contract": "合同/工资条",
-    "ugc_offer": "offer 截图",
-    "ugc_other": "其他",
-}
 
 
 @router.get("/companies")

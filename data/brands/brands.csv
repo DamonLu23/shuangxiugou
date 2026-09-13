@@ -1,3 +1,0 @@
-brand_name,normalized_name,aliases,company_name,biz_license_no,level,verified
-华为,HUAWEI,"华为手机,华为终端",华为技术有限公司,,6,false
-# 示例行：level 均为 6（待验证），M1 由爬虫+人工校对填充。

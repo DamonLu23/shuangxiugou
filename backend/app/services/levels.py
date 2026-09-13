@@ -2,19 +2,11 @@
 
 置信度 = Σ(来源权重 × 时间衰减)  归一化到 0~1。
 等级由各证据 raw_score 加权聚合后落在阈值区间。
+（LEVEL_NAMES / WHITELIST_LEVELS 常量见 db.models，全项目唯一定义处）
 """
 
 from datetime import date
 from typing import List, Optional
-
-LEVEL_NAMES = {
-    1: "严格双休",
-    2: "双休",
-    3: "大小周",
-    4: "单休",
-    5: "996",
-    6: "待验证",
-}
 
 # 来源权重：合同/offer > 员工口碑(review) > 招聘描述(job_post 虚标常见) > 宣传软文(权重极低) > 官方宣传
 # 权重在证据入库时写入 Evidence.weight（快照），聚合以入库值为准；此处为写入时的权威来源

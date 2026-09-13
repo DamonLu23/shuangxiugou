@@ -8,7 +8,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from ..db.models import Company
+from ..db.models import Company, WHITELIST_LEVELS
 from ..db.session import get_db
 
 router = APIRouter(prefix="/api")
@@ -36,7 +36,7 @@ async def goods_search(
     whitelist_map = {
         c.name: (c.level, c.confidence)
         for c in db.scalars(select(Company)).all()
-        if c.level in (1, 2)
+        if c.level in WHITELIST_LEVELS
     }
     whitelist_names = set(whitelist_map)
 

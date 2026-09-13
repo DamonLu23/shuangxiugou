@@ -10,14 +10,12 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from ..db.models import Company, Job, LEVEL_NAMES
+from ..db.models import Company, Job, LEVEL_NAMES, WHITELIST_LEVELS
 from ..db.session import get_db
 from ..services.github_feedback import create_issue
 from .deps import check_rate_limit, require_admin
 
 router = APIRouter(prefix="/api")
-
-WHITELIST_LEVELS = (1, 2)
 
 
 @router.get("/jobs/search")
