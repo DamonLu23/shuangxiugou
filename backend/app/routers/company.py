@@ -7,7 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..config import settings
-from ..db.models import Company, Evidence, LEVEL_NAMES, UgcReport
+from ..db.models import Company, Evidence, LEVEL_NAMES, UgcReport, WHITELIST_LEVELS
 from ..db.session import get_db
 from ..services.levels import recalc_company, weight_for
 from ..services.signalkeys import score_job_description
@@ -21,12 +21,13 @@ UGC_SOURCE_TYPES = {"ugc_offer", "ugc_contract", "ugc_other"}
 
 @router.get("/companies")
 async def company_list(
-    level: Optional[int] = Query(None, ge=1, le=6),
+    level: Optional[int] = Query(None, ge=1, le=2, description="白名单内筛选：1 或 2"),
     limit: int = Query(50, ge=1, le=200),
     db: Session = Depends(get_db),
 ):
-    """企业档案列表（等级筛选 + 置信度排序）。"""
-    stmt = select(Company.id, Company.name, Company.level, Company.confidence, Company.disputed)
+    """企业档案列表（白名单承诺：只返回 L1/L2 企业）。"""
+    stmt = (select(Company.id, Company.name, Company.level, Company.confidence, Company.disputed)
+            .where(Company.level.in_(WHITELIST_LEVELS)))
     if level:
         stmt = stmt.where(Company.level == level)
     stmt = stmt.order_by(Company.level, Company.confidence.desc()).limit(limit)
@@ -41,10 +42,10 @@ async def company_list(
 
 @router.get("/companies/{company_id}")
 async def company_detail(company_id: int, db: Session = Depends(get_db)):
-    """企业双休档案：等级 + 置信度 + 证据摘要。"""
+    """企业双休档案（白名单承诺：仅 L1/L2 企业可访问，其余 404）。"""
     c = db.get(Company, company_id)
-    if not c:
-        raise HTTPException(404, "企业不存在")
+    if not c or c.level not in WHITELIST_LEVELS:
+        raise HTTPException(404, "企业不存在或未收录")
     evs = db.execute(
         select(Evidence).where(Evidence.company_id == company_id)
         .order_by(Evidence.raw_score.desc())

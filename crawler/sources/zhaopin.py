@@ -53,11 +53,17 @@ CITY_TOKENS = {
 
 
 def extract_city(item_text: str, fallback: str = "") -> str:
-    """从岗位卡片文本启发式提取城市（卡片 text 里的城市 token 优先）。"""
+    """从岗位卡片文本提取城市：取文本中位置最靠前的命中城市（确定性）。"""
+    best_pos, best_city = None, fallback
     for tok in CITY_TOKENS:
-        if f"{tok} " in item_text or item_text.endswith(tok):
-            return tok
-    return fallback
+        pos = item_text.find(tok + " ")
+        if pos == -1 and item_text.endswith(tok):
+            pos = len(item_text) - len(tok)
+        if pos == -1:
+            continue
+        if best_pos is None or pos < best_pos:
+            best_pos, best_city = pos, tok
+    return best_city
 
 _UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
        "(KHTML, like Gecko) Chrome/148.0 Safari/537.36")

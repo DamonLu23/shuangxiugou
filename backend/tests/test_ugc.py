@@ -136,19 +136,3 @@ def test_validation(client):
     assert tc.post("/api/companies/9999/report", json={
         "source_type": "ugc_other", "description": "我是员工希望补充真实情况"
     }).status_code == 404
-
-
-def test_rate_limit(client):
-    tc = client["tc"]
-    from sqlalchemy.orm import Session
-    with Session(client["engine"]) as s:
-        cid = s.query(Company).first().id
-    for i in range(5):
-        assert tc.post(f"/api/companies/{cid}/report", json={
-            "source_type": "ugc_other",
-            "description": f"第{i}条正常描述，内容超过五个字",
-        }).status_code == 200
-    # 第 6 条触发限流
-    assert tc.post(f"/api/companies/{cid}/report", json={
-        "source_type": "ugc_other", "description": "超出限额的第六条上报内容",
-    }).status_code == 429

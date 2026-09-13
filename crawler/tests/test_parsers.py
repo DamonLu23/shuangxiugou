@@ -1,6 +1,6 @@
 """采集源解析纯函数单测（不触网）。
 
-覆盖 REVIEW P3：Bing SERP 解析（黑名单/问句/员工平台分类）。
+覆盖：Bing SERP 解析（黑名单/问句/员工平台分类）、智联城市提取。
 """
 
 import sys
@@ -10,6 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
 
 from sources.bing_snippet import parse_bing_results
+from sources.zhaopin import extract_city
 
 
 def _serp(*items: str) -> str:
@@ -72,3 +73,21 @@ class TestParseBing:
             ("https://www.zhihu.com/question/5", "华为发布会",
              "华为发布了新款手机，配置很强"))
         assert parse_bing_results(html, "华为") == []
+
+
+class TestExtractCity:
+    def test_common_city(self):
+        assert extract_city("急招普工 4000-5000元 西安 经验不限 高中") == "西安"
+        assert extract_city("结构开发工程师 8000-11000元 苏州 1-3年 本科") == "苏州"
+
+    def test_endswith_city(self):
+        assert extract_city("后端工程师 15-25K 杭州") == "杭州"
+
+    def test_fallback_when_unknown(self):
+        assert extract_city("远程办公 岗位描述", fallback="未知") == "未知"
+        assert extract_city("", fallback="") == ""
+
+    def test_city_priority_first_match(self):
+        # 多城市文本取首个命中
+        text = "北京 上海 双城招聘 工程师"
+        assert extract_city(text) == "北京"
