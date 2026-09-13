@@ -1,0 +1,32 @@
+name: 数据纠错
+description: 发现档案/岗位/好物数据有误，反馈核对
+title: "【纠错】"
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: "每一条反馈都会被核对，修正后随下周数据包生效。"
+  - type: dropdown
+    id: target
+    attributes:
+      label: 出错的数据
+      options:
+        - 企业档案（companies）
+        - 岗位数据（jobs）
+        - 好物目录（goods）
+        - 其他
+    validations:
+      required: true
+  - type: input
+    id: company
+    attributes:
+      label: 涉及企业/商品（必填）
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: 问题描述（必填）
+      description: 说明错误点与你的依据（可附链接）
+    validations:
+      required: true

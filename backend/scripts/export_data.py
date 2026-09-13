@@ -1,12 +1,17 @@
-"""数据制品导出：SQLite 中间库 → 开源数据包（data/ 下的 JSON/CSV 制品）。
+"""数据制品导出：SQLite 中间库 → 开源数据包（公开制品 / 本地复现报告）。
 
-制品（提交进 git，用户 pull 即用）：
-- data/companies.json   白名单企业档案（对外只含 L1/L2；全量另存 data/companies_all.json）
-- data/evidences.json   证据明细（链接+关键词+日期+权重，无正文）
-- data/jobs.json        岗位数据快照（白名单企业岗位）
-- data/goods.csv        好物目录（由社区 PR 维护，导出不覆盖）
+【保守数据策略】
+- 公开制品（进 git，用户 pull 即用）：
+  - data/companies.json   白名单企业档案（仅 L1/L2，证据内嵌可复核）
+  - data/jobs.json        白名单岗位快照
+  - data/goods.csv        好物目录（社区 PR 维护，导出不覆盖）
+- 本地复现（--full，写入 data/local/，该目录已 gitignore，不发布）：
+  - data/local/companies_all.json  全量档案（含 L3~L6，仅供自愿复现者本地查看）
+  - data/local/evidences.json      全量证据明细
 
-用法: .venv/bin/python scripts/export_data.py
+用法:
+    .venv/bin/python scripts/export_data.py        # 公开制品
+    .venv/bin/python scripts/export_data.py --full # 公开制品 + 本地全量报告
 """
 
 import csv
@@ -24,78 +29,55 @@ from app.db.session import engine
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data"
+LOCAL = DATA / "local"
 
 EXPORTED_AT = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def _company_dict(c: Company, evidences: list[Evidence]) -> dict:
+def _evidence_dict(e: Evidence) -> dict:
     return {
-        "id": c.id,
-        "name": c.name,
-        "level": c.level,
-        "confidence": round(c.confidence, 3),
-        "disputed": bool(c.disputed),
-        "updated_at": c.updated_at.strftime("%Y-%m-%d") if c.updated_at else None,
-        "evidence_count": len(evidences),
-        "evidences": [{
-            "source_type": e.source_type,
-            "url": e.url,
-            "keywords": (e.keywords or "").split(","),
-            "raw_score": e.raw_score,
-            "weight": e.weight,
-            "collected_at": str(e.collected_at),
-        } for e in evidences],
+        "source_type": e.source_type,
+        "url": e.url,
+        "keywords": (e.keywords or "").split(","),
+        "raw_score": e.raw_score,
+        "weight": e.weight,
+        "collected_at": str(e.collected_at),
     }
 
 
-def export_companies(session) -> tuple[int, int]:
+def export_public(session) -> tuple[int, int, int]:
+    """公开制品：白名单企业（含证据）+ 岗位 + goods 种子。"""
     companies = session.scalars(select(Company)).all()
-    all_rows, whitelist = [], []
+    whitelist = []
     for c in companies:
+        if c.level not in (1, 2):
+            continue
         evs = session.scalars(
             select(Evidence).where(Evidence.company_id == c.id)
             .order_by(Evidence.raw_score.desc())
         ).all()
-        row = _company_dict(c, evs)
-        all_rows.append(row)
-        if c.level in (1, 2):  # 白名单：对外只发布 L1/L2
-            whitelist.append(row)
+        whitelist.append({
+            "id": c.id,
+            "name": c.name,
+            "level": c.level,
+            "confidence": round(c.confidence, 3),
+            "disputed": bool(c.disputed),
+            "updated_at": c.updated_at.strftime("%Y-%m-%d") if c.updated_at else None,
+            "evidence_count": len(evs),
+            "evidences": [_evidence_dict(e) for e in evs],
+        })
 
     payload = {
         "generated_at": EXPORTED_AT,
-        "note": "等级由公开渠道证据交叉验证聚合，仅供参考；明细见 evidences 字段（来源链接）。",
+        "strategy": "保守策略：本仓库仅发布白名单（L1/L2）推荐数据，不发布任何负面评级。",
         "count": len(whitelist),
         "companies": whitelist,
     }
     (DATA / "companies.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
 
-    all_payload = {
-        "generated_at": EXPORTED_AT,
-        "note": "全量档案（含 L3-L6）仅供本地研究/复现，不用于任何对外展示。",
-        "count": len(all_rows),
-        "companies": all_rows,
-    }
-    (DATA / "companies_all.json").write_text(
-        json.dumps(all_payload, ensure_ascii=False, indent=1), encoding="utf-8")
-
-    evidences = {
-        "generated_at": EXPORTED_AT,
-        "note": "仅存来源链接+关键词+日期，不存原文。",
-        "count": sum(len(r["evidences"]) for r in all_rows),
-        "evidences": [
-            {"company_name": r["name"], **e}
-            for r in all_rows for e in r["evidences"]
-        ],
-    }
-    (DATA / "evidences.json").write_text(
-        json.dumps(evidences, ensure_ascii=False, indent=1), encoding="utf-8")
-    return len(whitelist), len(all_rows)
-
-
-def export_jobs(session) -> int:
     jobs = session.scalars(select(Job)).all()
-    payload = {
+    job_payload = {
         "generated_at": EXPORTED_AT,
         "note": "岗位快照，仅收录白名单企业（L1/L2）；岗位状态以招聘平台为准。",
         "count": len(jobs),
@@ -105,13 +87,53 @@ def export_jobs(session) -> int:
             "company_name": j.company_name,
             "city": j.city,
             "tags": (j.tags or "").split(","),
+            "salary": j.salary,
             "url": j.url,
             "collected_at": str(j.collected_at),
         } for j in jobs],
     }
     (DATA / "jobs.json").write_text(
-        json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
-    return len(jobs)
+        json.dumps(job_payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    return len(whitelist), len(jobs)
+
+
+def export_local_full(session) -> int:
+    """本地复现报告（gitignore，不入仓库）：全量档案 + 全量证据。"""
+    LOCAL.mkdir(exist_ok=True)
+    companies = session.scalars(select(Company)).all()
+    all_rows = []
+    for c in companies:
+        evs = session.scalars(
+            select(Evidence).where(Evidence.company_id == c.id)
+            .order_by(Evidence.raw_score.desc())
+        ).all()
+        all_rows.append({
+            "id": c.id,
+            "name": c.name,
+            "level": c.level,
+            "confidence": round(c.confidence, 3),
+            "disputed": bool(c.disputed),
+            "updated_at": c.updated_at.strftime("%Y-%m-%d") if c.updated_at else None,
+            "evidence_count": len(evs),
+            "evidences": [_evidence_dict(e) for e in evs],
+        })
+    (LOCAL / "companies_all.json").write_text(json.dumps({
+        "generated_at": EXPORTED_AT,
+        "note": "本地复现报告：含 L3~L6 全量评级。仅用于个人研究/复现，请勿对外展示、转载、传播。",
+        "count": len(all_rows),
+        "companies": all_rows,
+    }, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    (LOCAL / "evidences.json").write_text(json.dumps({
+        "generated_at": EXPORTED_AT,
+        "note": "全量证据明细（链接+关键词+日期，不存原文）。仅本地研究使用。",
+        "count": sum(r["evidence_count"] for r in all_rows),
+        "evidences": [
+            {"company_name": r["name"], **e}
+            for r in all_rows for e in r["evidences"]
+        ],
+    }, ensure_ascii=False, indent=1), encoding="utf-8")
+    return len(all_rows)
 
 
 def ensure_goods_seed():
@@ -125,19 +147,19 @@ def ensure_goods_seed():
 
 
 def main():
-    print(f"[导出] 数据制品 → {DATA}")
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--full", action="store_true", help="额外生成本地全量复现报告（data/local/）")
+    args = ap.parse_args()
+
+    print(f"[导出] 公开制品 → {DATA}")
     from sqlalchemy.orm import Session
     with Session(engine) as session:
-        wl, total = export_companies(session)
-        print(f"  companies.json: 白名单 {wl} 家；companies_all.json: 全量 {total} 家")
-        try:
-            jobs = export_jobs(session)
-            print(f"  jobs.json: {jobs} 个岗位")
-        except Exception as e:
-            print(f"  jobs.json: 导出失败（{type(e).__name__}），已写空快照")
-            (DATA / "jobs.json").write_text(json.dumps(
-                {"generated_at": EXPORTED_AT, "count": 0, "jobs": []},
-                ensure_ascii=False, indent=1), encoding="utf-8")
+        wl, jobs = export_public(session)
+        print(f"  companies.json: 白名单 {wl} 家；jobs.json: {jobs} 个岗位")
+        if args.full:
+            total = export_local_full(session)
+            print(f"  data/local/companies_all.json: 全量 {total} 家（已 gitignore，不发布）")
     ensure_goods_seed()
     print("完成")
 

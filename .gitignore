@@ -25,3 +25,5 @@ xcuserdata/
 
 # === 系统 ===
 .DS_Store
+# 保守策略：全量评级/证据仅本地复现（不发布）
+data/local/

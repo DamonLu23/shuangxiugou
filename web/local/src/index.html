@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>双休购 · 本地版</title>
+<style>
+:root{--bg:#fafaf7;--green:#2e8b57;--mint:#72b98c;--gray:#9a9a9a;--ink:#2b2b2b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding-bottom:40px}
+.container{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--green);text-decoration:none}
+header{display:flex;gap:22px;align-items:center;padding:20px;max-width:820px;margin:0 auto}
+header .logo{font-weight:800;font-size:20px;color:var(--green)}
+h1.title{font-size:26px;font-weight:800;color:var(--green);margin:30px 0 4px}
+p.slogan{color:var(--gray);margin-bottom:20px}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tab{padding:8px 18px;border-radius:999px;cursor:pointer;font-weight:500;color:var(--gray);border:1px solid #eee;background:#fff}
+.tab.on{background:var(--green);color:#fff;border-color:var(--green)}
+.search{display:flex;gap:10px;background:#fff;border-radius:999px;padding:6px 8px 6px 20px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.search input{flex:1;border:none;outline:none;font-size:16px}
+.search button{border:none;background:var(--green);color:#fff;font-weight:600;padding:10px 24px;border-radius:999px;cursor:pointer}
+.card{background:#fff;border-radius:18px;padding:16px;box-shadow:0 3px 10px rgba(0,0,0,.05);margin-bottom:12px}
+.row{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #f0f0ea}
+.row:last-child{border-bottom:none}
+.row .name{flex:1;min-width:0}
+h3{font-size:16px;font-weight:600;word-break:break-all}
+p.sub{font-size:12px;color:var(--gray)}
+.badge{display:inline-flex;align-items:center;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.badge.l1{color:var(--green);border:1px solid var(--green)}
+.badge.solid{background:var(--green);color:#fff;border:none}
+.chip{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:#f0f0ea;color:var(--gray);margin:2px 4px 2px 0}
+.btn{display:inline-block;background:var(--green);color:#fff;border:none;padding:9px 22px;border-radius:999px;font-weight:600;cursor:pointer;font-size:14px}
+.btn.ghost{background:#fff;color:var(--green);border:1px solid var(--green)}
+.muted{color:var(--gray);font-size:12px}
+.empty{text-align:center;color:var(--gray);padding:50px 0}
+.disclaimer{font-size:11px;color:var(--gray);margin-top:14px;line-height:1.7}
+.updated{font-size:11px;color:#bbb;text-align:center;margin-top:30px}
+.icon-btn{border:none;background:none;color:var(--green);font-size:12px;cursor:pointer;padding:0}
+</style>
+</head>
+<body>
+<header>
+  <span class="logo">🌿 双休购 · 本地版</span>
+  <span class="muted">开源数据包 · 数据更新于 <span id="updated"></span></span>
+</header>
+
+<div class="container">
+  <h1 class="title">找工作，只搜双休企业；买东西，只荐双休企业</h1>
+  <p class="slogan">保守策略：本页仅展示白名单（L1/L2）推荐数据，不包含任何企业负面评级</p>
+
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-mode="jobs">💼 找工作</button>
+    <button class="tab" data-mode="goods">🛒 买好物</button>
+    <button class="tab" data-mode="companies">🏢 企业榜</button>
+  </div>
+
+  <form class="search" id="searchForm">
+    <input id="searchInput" placeholder="搜索岗位，如 前端 / 运营 / 会计">
+    <button type="submit">搜索</button>
+  </form>
+
+  <p id="resultInfo" class="muted" style="margin:12px 0;"></p>
+  <div id="results"></div>
+  <div id="empty" class="empty" style="display:none;">没有匹配结果</div>
+
+  <p class="disclaimer">
+    数据来自公开招聘信息与公开讨论，仅供参考。参与社区（报岗位 / 纠错 / 申诉）请通过仓库
+    <a id="repoLink" href="https://github.com/shuangxiugou/shuangxiugou/issues" target="_blank" rel="noopener">GitHub Issues</a>。
+    Clone 后数据更新：<code>git pull</code> 后重新构建（<code>npm run local</code>）。
+  </p>
+</div>
+
+<p class="updated">data generated: <span id="generatedAt"></span></p>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

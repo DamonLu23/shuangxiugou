@@ -1,0 +1,40 @@
+name: 报岗位
+description: 提交你见过的双休（L1/L2）企业岗位
+title: "【报岗位】"
+labels: ["job-report"]
+body:
+  - type: markdown
+    attributes:
+      value: "感谢贡献！审核通过且企业为白名单后将收录进下周数据包。"
+  - type: input
+    id: company
+    attributes:
+      label: 公司全名（必填）
+      placeholder: 例：浙江苏泊尔股份有限公司
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: 岗位名称（必填）
+      placeholder: 例：后端工程师（周末双休）
+    validations:
+      required: true
+  - type: input
+    id: city
+    attributes:
+      label: 城市
+      placeholder: 例：杭州
+  - type: input
+    id: salary
+    attributes:
+      label: 薪资
+      placeholder: 例：15-25K
+  - type: input
+    id: url
+    attributes:
+      label: 岗位链接（公开招聘链接，可选）
+      placeholder: https://…
+  - type: markdown
+    attributes:
+      value: "提示：岗位链接优先来自公开招聘平台。涉及个人信息请脱敏。"

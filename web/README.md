@@ -1,12 +1,22 @@
-# web/ （M3 起开发）
+# web/ 前端（双形态）
 
-白名单网站 SPA：Vue 3 + Vite + Tailwind。
+## 形态 1：本地版（主路径，零服务器）
 
-页面规划：
-- 首页（双 Tab：找工作 / 买好物）
-- 求职搜索（岗位 → 白名单企业岗位，城市/等级筛选）
-- 好物目录（品类 → 双休企业代表商品）
-- 企业榜 / 企业档案页（等级+置信度+证据链接）
-- 企业申诉页 / 贡献指南页
+```bash
+npm run local
+```
 
-部署：Cloudflare Pages（前端）+ 海外 VPS（FastAPI 后端）。
+生成 `web/local/dist/`（`data.js` 内嵌公开数据包：白名单企业/岗位/好物），
+双击 `index.html` 即可使用（file:// 安全，无任何后端依赖）。
+
+- 数据随仓库每周更新，`git pull` 后重新 `npm run local` 即得最新
+- 报岗位/申诉/纠错入口跳转 GitHub Issue 模板（无需后端）
+
+## 形态 2：在线 SPA（可选自托管）
+
+```bash
+npm install && npm run build   # 产物 dist/，配 Vite proxy + FastAPI 后端
+npm run dev                    # 开发：/api 代理到 127.0.0.1:8000
+```
+
+在线部署可选（非主路径）：传统部署见 DEPLOY.md。零成本优先推荐本地形态。

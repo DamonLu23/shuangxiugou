@@ -13,8 +13,14 @@
 
 1. 所有面向用户的页面仅展示 **L1 严格双休 / L2 双休** 的企业
 2. 永不展示负面评级、不评价未收录企业（你没被推荐 ≠ 你不好）
-3. 企业可随时申诉更正（见 [APPEAL.md](APPEAL.md)）
+3. 企业可随时申诉更正（见 `APPEAL.md`，48h 承诺）
 4. 证据只链接不转述（数据来源均为公开招聘信息与公开讨论）
+
+## 保守数据策略
+
+- 本仓库**只发布白名单（L1/L2）推荐数据**：`companies.json`、`jobs.json`、`goods.csv`
+- 全量评级（L3~L6）与全量证据**不对外发布**，仅在本地复现时生成（`.venv/bin/python backend/scripts/export_data.py --full` → `data/local/`，该目录已 gitignore）
+- 想复现完整评级？证据都在公开链接里，跑采集器自己算
 
 ## 数据
 
@@ -23,10 +29,9 @@
 | 文件 | 内容 | 说明 |
 |---|---|---|
 | `companies.json` | 白名单企业档案 | 等级 + 置信度 + 证据链接，对外唯一权威 |
-| `companies_all.json` | 全量档案（含 L3~L6） | 仅供本地研究/复现，禁止对外展示 |
-| `evidences.json` | 证据明细 | 链接 + 关键词 + 日期，不存原文 |
-| `jobs.json` | 白名单企业在招岗位快照（301+） | `collect_jobs.py` 周更 |
+| `jobs.json` | 白名单企业在招岗位快照 | `collect_jobs.py` 周更 |
 | `goods.csv` | 好物目录 | 社区 PR 维护（`company,品类,商品,官方链接`） |
+| `local/` | 全量评级/证据（复现产物） | 已 gitignore，不发布 |
 
 ### 等级体系
 
@@ -39,21 +44,37 @@
 
 置信度 = Σ(来源权重 × 时间衰减)，多源交叉验证，证据可点击复核。
 
-## 快速开始（复现数据）
+## 快速开始（零服务器，本地使用）
+
+```bash
+# 1. clone 仓库（或 git pull 更新数据）
+git clone https://github.com/shuangxiugou/shuangxiugou.git && cd shuangxiugou
+
+# 2.（可选）重新打包本地数据
+cd web && npm install && npm run local
+
+# 3. 双击 web/local/dist/index.html 即可使用（或 python3 -m http.server）
+```
+
+本地版包含：双休岗位搜索（301+）、好物目录、企业榜与证据链接、申诉/报岗位入口（跳转 GitHub Issue）。
+
+> 不需要任何服务器：数据随仓库周更，pull 即得最新。
+
+## 复现完整数据（可选，技术向）
 
 ```bash
 cd backend && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/uvicorn app.main:app --reload --port 8000
-# API 文档 http://127.0.0.1:8000/docs
+.venv/bin/uvicorn app.main:app --reload --port 8000   # API 文档 /docs
+.venv/bin/python scripts/export_data.py --full         # 生成本地全量报告 data/local/
 ```
 
 ## 贡献
 
-欢迎以三种方式参与：
+欢迎以三种方式参与（均走 GitHub，无需搭建环境）：
 
-1. **提交证据**：PR 补充企业档案证据（offer/合同/公开报道链接），说明证据类型与时效
+1. **报岗位**：issue 模板 `report_job.yml`（本地版各页面也有入口）
 2. **好物目录**：PR 更新 `data/goods.csv`（只加白名单企业商品）
-3. **企业申诉**：企业方请走 [APPEAL.md](APPEAL.md) 流程，一般 48h 内处理
+3. **企业申诉/纠错**：issue 模板 `appeal.yml` / `correction.yml`
 
 详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
@@ -64,10 +85,10 @@ cd backend && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 ## 目录结构
 
 ```
-data/       开源数据包（周更）
+data/       开源数据包（周更，仅白名单公开）
 crawler/    采集器（证据 + 岗位）+ 评分算法 + 校验
-backend/    FastAPI（求职/好物/档案/申诉/UGC 审核 API）
-web/        白名单网站 SPA（Vue 3 + Vite，见 DEPLOY.md）
+backend/    FastAPI（求职/好物/档案/申诉/UGC 审核），可选自托管
+web/        双形态站点：SPA（Vite）+ 本地版（npm run local）
 docs/       产品/资质/验证记录
 ios/        （已弃用）早期 SwiftUI 原型，保留参考
 ```

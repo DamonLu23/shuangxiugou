@@ -39,6 +39,16 @@ jobs:
           cd backend
           python scripts/export_data.py
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Rebuild local bundle (clone-and-use)
+        run: |
+          cd web
+          npm install --prefer-offline
+          npm run local
+
       - name: Open data PR
         uses: peter-evans/create-pull-request@v6
         with:
@@ -48,4 +58,5 @@ jobs:
           title: '数据周更（自动生成）'
           body: |
             自动生成的数据更新 PR，由维护者人工抽查后合并。
-            - 检查点：白名单数量是否合理、等级分布是否突变、证据链接是否有效。
+            - 检查点：白名单数量是否合理、等级分布是否突变、证据链接是否有效、
+              本地版 bundle（web/local/dist）是否同步更新。

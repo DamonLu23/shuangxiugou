@@ -1,0 +1,44 @@
+name: 企业申诉/更正
+description: 企业方或用户对本项目的白名单收录提出更正、删除或补充
+title: "【申诉】"
+labels: ["appeal"]
+body:
+  - type: markdown
+    attributes:
+      value: "处理承诺：一般 48 小时内回复。详见仓库 APPEAL.md。"
+  - type: input
+    id: company
+    attributes:
+      label: 企业全名（与营业执照一致，必填）
+      placeholder: 例：某某科技股份有限公司
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: 申诉类型
+      options:
+        - 更正信息
+        - 删除信息
+        - 补充正面证据
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: 事由（必填）
+      description: 说明原因；如有官方作息制度/合同条款，欢迎附公开链接或盖章说明
+      placeholder: 例如：招聘信息已更新为五天工作制，请补充证据重新评级
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: 证据链接（公开链接即可，请勿上传内部涉密文件）
+      placeholder: https://…
+  - type: input
+    id: contact
+    attributes:
+      label: 联系人/邮箱（可选）
+      placeholder: 邮箱或联系电话
