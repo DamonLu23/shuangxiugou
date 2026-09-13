@@ -48,7 +48,7 @@
 
 ```bash
 # 1. clone 仓库（或 git pull 更新数据）
-git clone https://github.com/shuangxiugou/shuangxiugou.git && cd shuangxiugou
+git clone https://github.com/DamonLu23/shuangxiugou.git && cd shuangxiugou
 
 # 2.（可选）重新打包本地数据
 cd web && npm install && npm run local

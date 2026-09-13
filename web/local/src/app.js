@@ -1,5 +1,5 @@
 /* 双休购本地版渲染逻辑（vanilla JS，零依赖，file:// 可用）。 */
-const GH_REPO = 'https://github.com/shuangxiugou/shuangxiugou'
+const GH_REPO = 'https://github.com/DamonLu23/shuangxiugou'
 
 const D = window.SXG_DATA || { companies: [], jobs: [], goods: [] }
 const LEVEL_NAMES = { 1: '严格双休', 2: '双休' }
