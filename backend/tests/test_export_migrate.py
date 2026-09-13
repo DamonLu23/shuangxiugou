@@ -6,14 +6,14 @@
 
 import json
 import tempfile
+from datetime import date
 from pathlib import Path
 
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import Session
 
-from app.db.models import Base, Company, Evidence
+from app.db.models import Base, Company, Evidence, Job
 from app.services import levels
-from datetime import date
 
 
 def _temp_db_engine():
@@ -67,6 +67,37 @@ class TestExport:
         payload = json.loads((tmp_path / "local" / "companies_all.json").read_text())
         assert payload["count"] == 3
         assert {c["level"] for c in payload["companies"]} == {1, 2, 4}
+
+    def test_export_jobs_only_active_whitelist(self, tmp_path, monkeypatch):
+        """岗位导出：只出白名单在招岗位（未审 UGC/已下架/非白名单全部排除）。"""
+        from scripts import export_data
+
+        engine = _temp_db_engine()
+        _seed(engine)
+        with Session(engine) as s:
+            white = s.query(Company).filter(Company.level == 1).one()
+            bad = s.query(Company).filter(Company.level == 4).one()
+            s.add_all([
+                Job(title="可见岗位", company_id=white.id, company_name=white.name,
+                    url="https://zp/1", active=True, source="zhaopin",
+                    collected_at=date.today()),
+                Job(title="已下架岗位", company_id=white.id, company_name=white.name,
+                    url="https://zp/2", active=False, source="zhaopin",
+                    collected_at=date.today()),
+                Job(title="非白名单岗位", company_id=bad.id, company_name=bad.name,
+                    url="https://zp/3", active=True, source="zhaopin",
+                    collected_at=date.today()),
+                Job(title="待审UGC岗位", company_id=white.id, company_name=white.name,
+                    url="ugc://job/1", active=False, source="ugc",
+                    collected_at=date.today()),
+            ])
+            s.commit()
+        monkeypatch.setattr(export_data, "DATA", tmp_path)
+        with Session(engine) as session:
+            count = export_data.export_jobs(session)
+        assert count == 1
+        payload = json.loads((tmp_path / "jobs.json").read_text())
+        assert [j["title"] for j in payload["jobs"]] == ["可见岗位"]
 
 
 class TestMigrate:

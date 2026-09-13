@@ -24,7 +24,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from sqlalchemy import select
 
-from app.db.models import Company, Evidence, Job
+from app.db.models import Company, Evidence, Job, WHITELIST_LEVELS
 from app.db.session import engine
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -76,10 +76,20 @@ def export_public(session) -> tuple[int, int, int]:
     (DATA / "companies.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
 
-    jobs = session.scalars(select(Job)).all()
+    jobs = export_jobs(session)
+    return len(whitelist), jobs
+
+
+def export_jobs(session) -> int:
+    """岗位导出：仅白名单企业在招岗位（未审 UGC/已下架/非白名单全部排除）。"""
+    jobs = session.scalars(
+        select(Job)
+        .join(Company, Company.id == Job.company_id)
+        .where(Job.active.is_(True), Company.level.in_(WHITELIST_LEVELS))
+    ).all()
     job_payload = {
         "generated_at": EXPORTED_AT,
-        "note": "岗位快照，仅收录白名单企业（L1/L2）；岗位状态以招聘平台为准。",
+        "note": "岗位快照，仅收录白名单企业（L1/L2）在招岗位；岗位状态以招聘平台为准。",
         "count": len(jobs),
         "jobs": [{
             "title": j.title,
@@ -94,7 +104,7 @@ def export_public(session) -> tuple[int, int, int]:
     }
     (DATA / "jobs.json").write_text(
         json.dumps(job_payload, ensure_ascii=False, indent=1), encoding="utf-8")
-    return len(whitelist), len(jobs)
+    return len(jobs)
 
 
 def export_local_full(session) -> int:

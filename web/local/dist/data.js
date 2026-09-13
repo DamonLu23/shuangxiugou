@@ -1,6 +1,6 @@
 /* 自动生成：shuangxiugou 本地数据包（保守策略：仅白名单公开数据） */
 window.SXG_DATA = {
-  "generated_at": "2026-09-13T15:32:14Z",
+  "generated_at": "2026-09-13T18:23:51Z",
   "companies": [
     {
       "id": 6,
@@ -5730,18 +5730,6 @@ window.SXG_DATA = {
       ],
       "salary": "1.5-2.5万",
       "url": "http://www.zhaopin.com/jobdetail/CC131486150J40886327714.htm?refcode=4021&srccode=402101&preactionid=e797f2dc-f838-4142-9bdf-2820bf9ff896",
-      "collected_at": "2026-09-13"
-    },
-    {
-      "title": "运营专员（周末双休）",
-      "company_id": 50,
-      "company_name": "顺丰速运有限公司",
-      "city": "北京",
-      "tags": [
-        ""
-      ],
-      "salary": "",
-      "url": "ugc://job",
       "collected_at": "2026-09-13"
     }
   ],

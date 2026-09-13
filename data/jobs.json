@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-09-13T15:32:14Z",
- "note": "岗位快照，仅收录白名单企业（L1/L2）；岗位状态以招聘平台为准。",
- "count": 301,
+ "generated_at": "2026-09-13T18:23:51Z",
+ "note": "岗位快照，仅收录白名单企业（L1/L2）在招岗位；岗位状态以招聘平台为准。",
+ "count": 300,
  "jobs": [
   {
    "title": "SCS-半导体工程师",
@@ -5015,18 +5015,6 @@
    ],
    "salary": "1.5-2.5万",
    "url": "http://www.zhaopin.com/jobdetail/CC131486150J40886327714.htm?refcode=4021&srccode=402101&preactionid=e797f2dc-f838-4142-9bdf-2820bf9ff896",
-   "collected_at": "2026-09-13"
-  },
-  {
-   "title": "运营专员（周末双休）",
-   "company_id": 50,
-   "company_name": "顺丰速运有限公司",
-   "city": "北京",
-   "tags": [
-    ""
-   ],
-   "salary": "",
-   "url": "ugc://job",
    "collected_at": "2026-09-13"
   }
  ]
