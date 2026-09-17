@@ -25,6 +25,9 @@
   | 2025 中国互联网综合实力前百家 | 95 | 官方为图片/PDF，用公开转载表格 |
 - 周更分片：企业池变大后 CI 单次跑不完全量 → `pipeline.py --chunk K/N`
   （按 key 哈希分片，CI 用 `周数%4+1` 取一片，4 周覆盖全池；本地可用 `--stale-days 28` 增量）
+- **CI 状态恢复**：CI 每次都是空 DB → pipeline 启动时从公开制品 `data/companies.json`
+  回灌白名单历史证据（`rehydrate_whitelist`），并把白名单企业加入每轮全采
+  （`split_whitelist`）；聚合以 DB 全量证据为准 → 分片周更只增不减，不会震荡
 
 ## 商品候选源（人工确认制）
 

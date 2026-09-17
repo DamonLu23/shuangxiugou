@@ -34,11 +34,81 @@ from sources.registry import load_config, make_evidence_sources
 DATA_DIR = Path(__file__).resolve().parents[1]
 SEED_CSV = DATA_DIR / "data" / "companies" / "seed.csv"
 DB_PATH = DATA_DIR / "data" / "shuangxiugou.db"
+COMPANIES_JSON = DATA_DIR / "data" / "companies.json"
 
 
 def load_seed_csv() -> list[dict]:
     with open(SEED_CSV, encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+def load_whitelist_json() -> dict:
+    """读取公开白名单制品（data/companies.json），不存在时返回空。"""
+    if not COMPANIES_JSON.exists():
+        return {}
+    with open(COMPANIES_JSON, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _parse_date(raw) -> date:
+    if not raw:
+        return date.today()
+    try:
+        return date.fromisoformat(str(raw)[:10])
+    except ValueError:
+        return date.today()
+
+
+def rehydrate_whitelist(engine, payload: dict) -> int:
+    """把公开白名单证据回灌进 DB（CI 从空仓库开跑时的状态恢复）。
+
+    CI 每次 checkout 都是空 DB：不回灌则分片周更只反映当周分片，
+    companies.json 会震荡甚至缩水。只回灌公开制品（L1/L2）证据，
+    全量评级仍只在本地生成（保守数据策略）。
+    """
+    companies = payload.get("companies") or []
+    if not companies:
+        return 0
+    Base.metadata.create_all(engine)
+    added = 0
+    with Session(engine) as db:
+        for c in companies:
+            name = c.get("name")
+            if not name:
+                continue
+            row = db.scalar(select(Company).where(Company.name == name))
+            if not row:
+                row = Company(name=name, level=c.get("level", 6),
+                              confidence=c.get("confidence", 0.0))
+                db.add(row)
+                db.flush()
+            elif not c.get("evidences"):
+                continue  # 无证据可回灌：不覆盖本地已算出的等级
+            for e in c.get("evidences") or []:
+                url = e.get("url") or ""
+                if url and db.scalar(select(Evidence).where(
+                        Evidence.company_id == row.id, Evidence.url == url)):
+                    continue
+                db.add(Evidence(
+                    company_id=row.id,
+                    source_type=e.get("source_type", "review"),
+                    url=url,
+                    keywords=",".join(e.get("keywords") or []),
+                    raw_score=e.get("raw_score", 0.0),
+                    weight=e.get("weight") or weight_for(e.get("source_type", "review")),
+                    collected_at=_parse_date(e.get("collected_at")),
+                    reviewed=False,
+                ))
+                added += 1
+        db.commit()
+    return added
+
+
+def split_whitelist(companies: list[dict], whitelist_names: set) -> tuple[list, list]:
+    """拆成（白名单, 其余）：白名单每周全采，其余走分片/新鲜度过筛。"""
+    base = [c for c in companies if c["full_name"] in whitelist_names]
+    rest = [c for c in companies if c["full_name"] not in whitelist_names]
+    return base, rest
 
 
 def dedup_evidence(evs: list) -> list:
@@ -107,16 +177,6 @@ def write_to_db(engine, companies: list[dict], all_evidences: list):
                 )
                 db.add(company_row)
                 db.flush()
-            if evs:
-                docs = [{
-                    "raw_score": e.raw_score,
-                    "weight": 1.0,
-                    "collected_at": e.collected_at,
-                    "source_type": e.source_type,
-                } for e in evs]
-                level, confidence = aggregate(docs)
-                company_row.level = level
-                company_row.confidence = confidence
             for e in evs:
                 existing = db.scalar(select(Evidence).where(
                     Evidence.company_id == company_row.id,
@@ -134,6 +194,20 @@ def write_to_db(engine, companies: list[dict], all_evidences: list):
                     collected_at=e.collected_at,
                     reviewed=False,
                 ))
+            if evs:
+                # 聚合以 DB 全量证据为准（含回灌的历史证据），
+                # 否则增量/分片采集会只按本轮证据重算等级
+                db.flush()
+                docs = [{
+                    "raw_score": x.raw_score,
+                    "weight": x.weight,
+                    "collected_at": x.collected_at,
+                    "source_type": x.source_type,
+                } for x in db.scalars(select(Evidence).where(
+                    Evidence.company_id == company_row.id)).all()]
+                level, confidence = aggregate(docs)
+                company_row.level = level
+                company_row.confidence = confidence
         db.commit()
 
 
@@ -162,10 +236,21 @@ async def main():
         if args.limit:
             companies = companies[: args.limit]
 
-    if args.chunk:
-        companies = chunk_companies(companies, args.chunk)
-    if args.stale_days > 0 and not args.chunk:
-        companies = filter_stale(companies, args.stale_days)
+        # 状态恢复 + 白名单每周全采（CI 从空仓库开跑，不回灌会导致白名单震荡）
+        wl_payload = load_whitelist_json()
+        whitelist_names = {c["name"] for c in wl_payload.get("companies", [])}
+        base, companies = split_whitelist(companies, whitelist_names)
+        if base:
+            print(f"[M1] 白名单每轮全采 {len(base)} 家（公开制品状态回灌）")
+
+        if args.chunk:
+            engine = create_engine(f"sqlite:///{DB_PATH}")
+            added = 0 if args.json else rehydrate_whitelist(engine, wl_payload)
+            if added:
+                print(f"[M1] 已回灌白名单历史证据 {added} 条")
+            companies = base + chunk_companies(companies, args.chunk)
+        elif args.stale_days > 0:
+            companies = base + filter_stale(companies, args.stale_days)
 
     print(f"[M1] 开始采集 {len(companies)} 家企业（共享浏览器 + 注册表源）")
     all_evs = []

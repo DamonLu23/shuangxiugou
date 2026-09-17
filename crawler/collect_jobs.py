@@ -4,8 +4,9 @@
 - zhaopin：智联公司主页岗位列表（品牌 key 检索）
 - official：企业官网招聘页（data/company_job_sources.csv 逐家配置，SPA 可渲染）
 
-老化机制：每次运行按**已启用的源**标记旧岗位 active=False，
-本次采集到的 URL 置 active=True → 岗位关闭/下架自动从对外数据中移除。
+老化机制：本轮**成功采集**的来源，对每家企业未再采集到的岗位置 active=False
+（采集失败的来源不动），本次采集到的 URL 置 active=True → 岗位关闭/下架自动移除，
+且单次运行失败不会误删岗位。
 
 用法:
     .venv/bin/python -u collect_jobs.py --limit 5     # 只跑前 5 家（验证用）
@@ -73,8 +74,6 @@ async def main():
     already = set()
     with Session(engine) as db:
         if not args.dry_run:
-            for j in db.scalars(select(Job).where(Job.source.in_(source_names))):
-                j.active = False  # 按启用源老化，未采集到的视为关闭
             already = {u for u in db.scalars(select(Job.url)).all()}
             db.commit()
 
@@ -89,14 +88,19 @@ async def main():
                 src.use_browser(browser)
         for i, (c, brand_key) in enumerate(companies, 1):
             company_jobs: list[dict] = []
+            source_ok: set = set()  # 本轮成功采集的来源（只对这些来源老化）
             for name, src, opts in sources:
                 try:
                     if name == "zhaopin":
                         got = await src.collect_jobs(brand_key)
                     elif name == "official":
+                        if not any(r["company_name"] == c.name
+                                   for r in opts.get("companies", [])):
+                            continue  # 该企业未配置官网源：不采集也不老化
                         got = await _collect_official(src, opts, c.name)
                     else:
                         continue
+                    source_ok.add(name)
                     company_jobs += got
                     record(health, name, ok=True, items=len(got))
                 except Exception as e:
@@ -108,7 +112,7 @@ async def main():
                 total += len(company_jobs)
                 continue
 
-            added = _save_jobs(c, brand_key, company_jobs, already)
+            added = _save_jobs(c, brand_key, company_jobs, already, source_ok)
             total += added
             print(f"  [{i}/{len(companies)}] {c.name}: 采集 {len(company_jobs)}，新增 {added}")
             if i < len(companies):
@@ -140,10 +144,22 @@ async def _collect_official(src, opts, company_name: str) -> list[dict]:
     return []
 
 
-def _save_jobs(company: Company, brand_key: str, jobs: list[dict], already: set) -> int:
-    """岗位入库：URL 去重 + active 置活。返回新增数。"""
+def _save_jobs(company: Company, brand_key: str, jobs: list[dict], already: set,
+               age_sources: set = None) -> int:
+    """岗位入库：URL 去重 + active 置活 + 按公司/来源老化。返回新增数。
+
+    age_sources 只包含本轮**成功采集**的来源：采集失败的来源不老化，
+    避免一次运行失败就把该企业岗位全部标记为关闭（旧实现全局预老化）。
+    """
     added = 0
+    age_sources = age_sources or set()
     with Session(engine) as db:
+        collected_urls = {j["url"] for j in jobs}
+        for src in age_sources:
+            for old in db.scalars(select(Job).where(
+                    Job.company_id == company.id, Job.source == src)):
+                if old.url not in collected_urls:
+                    old.active = False  # 雇主已下架（官网）或平台不再展示
         for j in jobs:
             src = j.get("source", "zhaopin")
             if j["url"] in already:
