@@ -8,6 +8,7 @@
 避免 202 家 = 202 次 chromium 启动；导航失败自动重试一次。
 """
 
+import asyncio
 import re
 from contextlib import asynccontextmanager
 from typing import List, Optional
@@ -117,6 +118,13 @@ class ZhaopinSource(Source):
             await page.goto(url, timeout=self.nav_timeout_ms, wait_until="domcontentloaded")
         await page.wait_for_timeout(self.settle_ms)
 
+    async def _evaluate(self, page, script, timeout: float = 30.0):
+        """page.evaluate 加超时：页面卡死时不再无限挂起（实测踩坑）。
+
+        超时抛 asyncio.TimeoutError，由上层 try/except 记为该公司采集失败并继续。
+        """
+        return await asyncio.wait_for(page.evaluate(script), timeout=timeout)
+
     # ---- 采集 ----
     async def fetch(self, keyword: str) -> list[RawEvidence]:
         evs: list[RawEvidence] = []
@@ -155,7 +163,7 @@ class ZhaopinSource(Source):
             url += f"&cityId={self.city_id}"
         try:
             await self._goto(page, url)
-            cards = await page.evaluate(_SEARCH_CARDS_JS)
+            cards = await self._evaluate(page, _SEARCH_CARDS_JS)
         except Exception as e:
             print(f"    [智联搜索失败] {keyword}: {type(e).__name__} {str(e)[:80]}")
             return []
@@ -180,7 +188,7 @@ class ZhaopinSource(Source):
     async def _collect_jobs(self, page, keyword, company) -> list[RawEvidence]:
         try:
             await self._goto(page, company["url"])
-            items = await page.evaluate(_JOBS_ITEMS_JS)
+            items = await self._evaluate(page, _JOBS_ITEMS_JS)
         except Exception as e:
             print(f"    [智联公司页失败] {keyword}/{company['name']}: {type(e).__name__} {str(e)[:80]}")
             return []
@@ -215,7 +223,7 @@ class ZhaopinSource(Source):
             for company in companies[: self.max_company_pages]:
                 try:
                     await self._goto(page, company["url"])
-                    items = await page.evaluate(_JOBS_ITEMS_JS)
+                    items = await self._evaluate(page, _JOBS_ITEMS_JS)
                 except Exception as e:
                     print(f"    [智联公司页失败] {keyword}/{company['name']}: {type(e).__name__}")
                     continue
