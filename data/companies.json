@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-09-13T18:49:27Z",
+ "generated_at": "2026-09-17T21:44:54Z",
  "strategy": "保守策略：本仓库仅发布白名单（L1/L2）推荐数据，不发布任何负面评级。",
- "count": 14,
+ "count": 19,
  "companies": [
   {
    "id": 6,
    "name": "三星(中国)投资有限公司",
-   "level": 1,
-   "confidence": 0.266,
+   "level": 2,
+   "confidence": 0.398,
    "disputed": false,
    "updated_at": "2026-09-11",
-   "evidence_count": 2,
+   "evidence_count": 3,
    "evidences": [
     {
      "source_type": "job_post",
@@ -33,6 +33,17 @@
      "raw_score": 1.5,
      "weight": 0.4,
      "collected_at": "2026-09-11"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC120340690J41034773204.htm?refcode=4021&srccode=402101&preactionid=df75a738-19b4-41ad-8b23-f984ec7287e6",
+     "keywords": [
+      "做五休二",
+      "三班倒"
+     ],
+     "raw_score": 0.19999999999999996,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
     }
    ]
   },
@@ -40,7 +51,7 @@
    "id": 11,
    "name": "华硕电脑(上海)有限公司",
    "level": 1,
-   "confidence": 0.266,
+   "confidence": 0.265,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 2,
@@ -71,7 +82,7 @@
    "id": 12,
    "name": "海尔智家股份有限公司",
    "level": 1,
-   "confidence": 0.266,
+   "confidence": 0.265,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 2,
@@ -102,7 +113,7 @@
    "id": 18,
    "name": "浙江苏泊尔股份有限公司",
    "level": 2,
-   "confidence": 0.2,
+   "confidence": 0.198,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 6,
@@ -175,7 +186,7 @@
    "id": 26,
    "name": "百度在线网络技术(北京)有限公司",
    "level": 1,
-   "confidence": 0.266,
+   "confidence": 0.265,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 2,
@@ -206,7 +217,7 @@
    "id": 27,
    "name": "北京字节跳动科技有限公司",
    "level": 1,
-   "confidence": 0.666,
+   "confidence": 0.662,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 4,
@@ -259,7 +270,7 @@
    "id": 47,
    "name": "北京趣拿信息技术有限公司",
    "level": 1,
-   "confidence": 0.266,
+   "confidence": 0.265,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 2,
@@ -290,7 +301,7 @@
    "id": 48,
    "name": "同程网络科技股份有限公司",
    "level": 1,
-   "confidence": 0.932,
+   "confidence": 0.926,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 7,
@@ -373,31 +384,10 @@
    ]
   },
   {
-   "id": 50,
-   "name": "顺丰速运有限公司",
-   "level": 1,
-   "confidence": 0.133,
-   "disputed": false,
-   "updated_at": "2026-09-11",
-   "evidence_count": 1,
-   "evidences": [
-    {
-     "source_type": "job_post",
-     "url": "http://www.zhaopin.com/jobdetail/CC131486150J40888011014.htm?refcode=4021&srccode=402101&preactionid=177d02a3-274f-40ff-a55e-1e5f91eca827",
-     "keywords": [
-      "双休"
-     ],
-     "raw_score": 1.5,
-     "weight": 0.4,
-     "collected_at": "2026-09-11"
-    }
-   ]
-  },
-  {
    "id": 102,
    "name": "浙江古茗科技有限公司",
    "level": 1,
-   "confidence": 0.533,
+   "confidence": 0.529,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 4,
@@ -454,7 +444,7 @@
    "id": 122,
    "name": "仁和药业股份有限公司",
    "level": 1,
-   "confidence": 0.266,
+   "confidence": 0.265,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 2,
@@ -486,10 +476,10 @@
    "id": 172,
    "name": "佛山市海天调味食品股份有限公司",
    "level": 1,
-   "confidence": 0.4,
+   "confidence": 0.93,
    "disputed": false,
    "updated_at": "2026-09-11",
-   "evidence_count": 3,
+   "evidence_count": 7,
    "evidences": [
     {
      "source_type": "job_post",
@@ -501,6 +491,17 @@
      "raw_score": 3.5,
      "weight": 0.4,
      "collected_at": "2026-09-12"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC134857540J40889470309.htm?refcode=4021&srccode=402101&preactionid=d9d53fdc-19ef-4857-ba22-0714f2467392",
+     "keywords": [
+      "周末双休",
+      "双休"
+     ],
+     "raw_score": 1.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
     },
     {
      "source_type": "job_post",
@@ -521,6 +522,36 @@
      "raw_score": 1.5,
      "weight": 0.4,
      "collected_at": "2026-09-12"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC221070010J40888051414.htm?refcode=4021&srccode=402101&preactionid=3539ea30-83de-4fb1-b8de-3df227256231",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC221070010J40714215314.htm?refcode=4021&srccode=402101&preactionid=3539ea30-83de-4fb1-b8de-3df227256231",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC221070010J40859295214.htm?refcode=4021&srccode=402101&preactionid=3539ea30-83de-4fb1-b8de-3df227256231",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
     }
    ]
   },
@@ -668,7 +699,7 @@
    "id": 191,
    "name": "泰康人寿保险有限责任公司",
    "level": 1,
-   "confidence": 0.433,
+   "confidence": 0.43,
    "disputed": false,
    "updated_at": "2026-09-11",
    "evidence_count": 4,
@@ -714,6 +745,341 @@
      "raw_score": -3.0,
      "weight": 0.1,
      "collected_at": "2026-09-12"
+    }
+   ]
+  },
+  {
+   "id": 263,
+   "name": "北京燕京啤酒股份有限公司",
+   "level": 2,
+   "confidence": 0.4,
+   "disputed": false,
+   "updated_at": "2026-09-12",
+   "evidence_count": 3,
+   "evidences": [
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CCL1484595860J40884755303.htm?refcode=4021&srccode=402101&preactionid=d605914a-bdab-468f-8b2d-de72670f5e6b",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CCL1484595860J40884761503.htm?refcode=4021&srccode=402101&preactionid=d605914a-bdab-468f-8b2d-de72670f5e6b",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CCL1484595860J40884759903.htm?refcode=4021&srccode=402101&preactionid=d605914a-bdab-468f-8b2d-de72670f5e6b",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    }
+   ]
+  },
+  {
+   "id": 344,
+   "name": "兴业银行股份有限公司",
+   "level": 2,
+   "confidence": 0.799,
+   "disputed": false,
+   "updated_at": "2026-09-16",
+   "evidence_count": 6,
+   "evidences": [
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447886510J40609891014.htm?refcode=4021&srccode=402101&preactionid=3e35748c-7f80-4f3b-a9c5-3debd77a4504",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447886510J40609897914.htm?refcode=4021&srccode=402101&preactionid=3e35748c-7f80-4f3b-a9c5-3debd77a4504",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447886510J40630014914.htm?refcode=4021&srccode=402101&preactionid=3e35748c-7f80-4f3b-a9c5-3debd77a4504",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447886510J40609898414.htm?refcode=4021&srccode=402101&preactionid=3e35748c-7f80-4f3b-a9c5-3debd77a4504",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447886510J40609894314.htm?refcode=4021&srccode=402101&preactionid=3e35748c-7f80-4f3b-a9c5-3debd77a4504",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447886510J40609902114.htm?refcode=4021&srccode=402101&preactionid=3e35748c-7f80-4f3b-a9c5-3debd77a4504",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    }
+   ]
+  },
+  {
+   "id": 456,
+   "name": "贝壳控股有限公司",
+   "level": 2,
+   "confidence": 0.266,
+   "disputed": false,
+   "updated_at": "2026-09-16",
+   "evidence_count": 2,
+   "evidences": [
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC300255130J40952406015.htm?refcode=4021&srccode=402101&preactionid=2be25646-8520-47e8-9fa0-97e181f7bb17",
+     "keywords": [
+      "不加班"
+     ],
+     "raw_score": 1.0,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC300255130J40899658515.htm?refcode=4021&srccode=402101&preactionid=2be25646-8520-47e8-9fa0-97e181f7bb17",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    }
+   ]
+  },
+  {
+   "id": 539,
+   "name": "天津友发钢管集团股份有限公司",
+   "level": 2,
+   "confidence": 0.267,
+   "disputed": false,
+   "updated_at": "2026-09-16",
+   "evidence_count": 2,
+   "evidences": [
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC279078430J40775821306.htm?refcode=4021&srccode=402101&preactionid=365d8f20-e358-43e3-8329-6085566d4aa0",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-18"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC279078430J40773772706.htm?refcode=4021&srccode=402101&preactionid=365d8f20-e358-43e3-8329-6085566d4aa0",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-18"
+    }
+   ]
+  },
+  {
+   "id": 692,
+   "name": "科大讯飞股份有限公司",
+   "level": 2,
+   "confidence": 0.267,
+   "disputed": false,
+   "updated_at": "2026-09-16",
+   "evidence_count": 2,
+   "evidences": [
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC205108410J41036026704.htm?refcode=4021&srccode=402101&preactionid=9c6dc0f5-1bd1-4e3c-9375-1700d06848cd",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-18"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC205108410J41036012404.htm?refcode=4021&srccode=402101&preactionid=9c6dc0f5-1bd1-4e3c-9375-1700d06848cd",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-18"
+    }
+   ]
+  },
+  {
+   "id": 961,
+   "name": "满帮集团有限公司",
+   "level": 2,
+   "confidence": 1.0,
+   "disputed": false,
+   "updated_at": "2026-09-16",
+   "evidence_count": 11,
+   "evidences": [
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40819435505.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "周末双休",
+      "双休"
+     ],
+     "raw_score": 1.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40882313305.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "周末双休",
+      "双休"
+     ],
+     "raw_score": 1.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40879117705.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "周末双休",
+      "双休"
+     ],
+     "raw_score": 1.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40882313505.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "周末双休",
+      "双休"
+     ],
+     "raw_score": 1.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40894513405.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "周末双休",
+      "双休"
+     ],
+     "raw_score": 1.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40886793405.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "周末双休",
+      "双休"
+     ],
+     "raw_score": 1.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40891326305.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "周末双休",
+      "双休"
+     ],
+     "raw_score": 1.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40886914405.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "周末双休",
+      "双休"
+     ],
+     "raw_score": 1.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40649935205.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40658555705.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "双休"
+     ],
+     "raw_score": 0.8,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
+    },
+    {
+     "source_type": "job_post",
+     "url": "http://www.zhaopin.com/jobdetail/CC447141630J40844289205.htm?refcode=4021&srccode=402101&preactionid=39198855-040c-4825-be1f-0dc5950d830f",
+     "keywords": [
+      "加班补贴",
+      "加班"
+     ],
+     "raw_score": -1.3,
+     "weight": 0.4,
+     "collected_at": "2026-09-17"
     }
    ]
   }
