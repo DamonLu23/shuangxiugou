@@ -9,7 +9,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
 
-from sources.bing_snippet import parse_bing_results
+from sources.bing_snippet import QUERY_TEMPLATES, parse_bing_results
 from sources.zhaopin import extract_city
 
 
@@ -73,6 +73,28 @@ class TestParseBing:
             ("https://www.zhihu.com/question/5", "华为发布会",
              "华为发布了新款手机，配置很强"))
         assert parse_bing_results(html, "华为") == []
+
+
+class TestXiaohongshuTemplates:
+    def test_site_scoped_templates_present(self):
+        xhs = [t for t in QUERY_TEMPLATES if "site:xiaohongshu.com" in t]
+        assert len(xhs) >= 2
+        assert any("双休" in t for t in xhs)
+        assert any("加班" in t for t in xhs)
+
+    def test_template_format_kw_safe(self):
+        for t in QUERY_TEMPLATES:
+            assert "{kw}" in t
+            assert "华为" in t.format(kw="华为")
+
+    def test_xhs_snippet_scored_as_review(self):
+        html = _serp(
+            ("https://www.xiaohongshu.com/explore/1", "在顺丰上班是什么体验",
+             "顺丰总部周末双休，朝九晚六不加班"))
+        evs = parse_bing_results(html, "顺丰")
+        assert len(evs) == 1
+        assert evs[0].source_type == "review"  # EMPLOYEE_HOSTS 权重 0.9
+        assert evs[0].raw_score > 0
 
 
 class TestExtractCity:

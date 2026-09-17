@@ -2,7 +2,12 @@ name: data-refresh
 on:
   schedule:
     - cron: '30 20 * * 0'        # 每周日 20:30 UTC
-  workflow_dispatch: {}          # 也可手动触发
+  workflow_dispatch:
+    inputs:
+      full:
+        description: '全量采集（默认按周分片 1/4）'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -27,7 +32,19 @@ jobs:
       - name: Run collection pipeline
         run: |
           cd crawler
-          python -u pipeline.py || echo "pipeline 部分失败，继续导出已有数据"
+          if [ "${{ inputs.full }}" = "true" ]; then
+            echo "全量采集（手动触发）"
+            python -u pipeline.py || echo "pipeline 部分失败，继续导出已有数据"
+          else
+            CHUNK=$(( 10#$(date +%V) % 4 + 1 ))
+            echo "本周分片: ${CHUNK}/4（4 周覆盖全池；手动触发可勾选 full 全量）"
+            python -u pipeline.py --chunk ${CHUNK}/4 || echo "pipeline 部分失败，继续导出已有数据"
+          fi
+
+      - name: Import seed brands (companies/brands → DB)
+        run: |
+          cd crawler
+          python import_seed.py
 
       - name: Collect whitelist jobs
         run: |

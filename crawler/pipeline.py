@@ -2,17 +2,20 @@
 
 用法:
     python pipeline.py --limit 10        # 只跑前 10 家（验证用）
-    python pipeline.py                   # 全量 202 家（约 60~90 分钟）
+    python pipeline.py                   # 全量（1000+ 家，建议分批或本地夜间跑）
+    python pipeline.py --chunk 2/4       # 哈希分片（CI 周更）
+    python pipeline.py --stale-days 28   # 本地增量：只采证据过期/缺失的企业
     python pipeline.py --json out.json   # 不写库，输出证据 JSON（联调用）
 """
 
 import argparse
 import asyncio
 import csv
+import hashlib
 import json
 import sys
 from contextlib import nullcontext
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import sqlalchemy as sa
@@ -48,6 +51,46 @@ def dedup_evidence(evs: list) -> list:
         seen.add(key)
         out.append(e)
     return out
+
+
+def chunk_companies(companies: list[dict], spec: str) -> list[dict]:
+    """按 key 哈希把企业池切成 N 片，取第 K 片（无状态周更分片）。
+
+    企业池 1000+ 后 CI 单次跑不完全量：`--chunk K/N` 按确定性哈希分片，
+    每周取一片（如 `--chunk $(周数%4+1)/4`），4 周覆盖全池。
+    """
+    k, n = (int(x) for x in spec.split("/"))
+    if not (1 <= k <= n):
+        raise ValueError(f"--chunk 需形如 K/N 且 1<=K<=N，收到 {spec}")
+    out = [c for c in companies
+           if int(hashlib.md5(c["key"].encode("utf-8")).hexdigest(), 16) % n == k - 1]
+    print(f"[M1] 分片 {k}/{n}：本轮采集 {len(out)} 家（池子 {len(companies)} 家）")
+    return out
+
+
+def filter_stale(companies: list[dict], stale_days: int) -> list[dict]:
+    """周更分片：只保留「无证据」或「最近证据早于 stale_days」的企业。
+
+    企业池扩编到 1000+ 后，全量采集超出 CI 单次预算；按新鲜度分片后
+    每周只重采 1/N，保证时效同时控制时长（--stale-days 0 关闭过滤）。
+    """
+    engine = create_engine(f"sqlite:///{DB_PATH}")
+    Base.metadata.create_all(engine)
+    cutoff = date.today() - timedelta(days=stale_days)
+    with Session(engine) as db:
+        rows = db.execute(
+            select(Company.name, sa.func.max(Evidence.collected_at))
+            .join(Evidence, Evidence.company_id == Company.id)
+            .group_by(Company.id)
+        ).all()
+    latest = {name: dt for name, dt in rows if dt is not None}
+    fresh, stale = [], []
+    for c in companies:
+        dt = latest.get(c["full_name"])
+        (stale if dt is None or dt < cutoff else fresh).append(c)
+    print(f"[M1] 新鲜度分片（--stale-days {stale_days}）："
+          f"本轮采集 {len(stale)} 家，跳过 {len(fresh)} 家")
+    return stale
 
 
 def write_to_db(engine, companies: list[dict], all_evidences: list):
@@ -99,6 +142,9 @@ async def main():
     ap.add_argument("--limit", type=int, default=0, help="只跑前 N 家")
     ap.add_argument("--json", help="输出原始证据到文件（不写库）")
     ap.add_argument("--names", help="逗号分隔的指定企业 key（跳过种子文件读取）")
+    ap.add_argument("--chunk", help="哈希分片 K/N（CI 周更用，如 2/4）")
+    ap.add_argument("--stale-days", type=int, default=0,
+                    help="只采集证据过期/缺失的企业（0=全量，本地增量建议 28）")
     ap.add_argument("--politeness", type=float, default=1.5,
                     help="公司间限速秒数（默认 1.5s）")
     args = ap.parse_args()
@@ -115,6 +161,11 @@ async def main():
         companies = load_seed_csv()
         if args.limit:
             companies = companies[: args.limit]
+
+    if args.chunk:
+        companies = chunk_companies(companies, args.chunk)
+    if args.stale_days > 0 and not args.chunk:
+        companies = filter_stale(companies, args.stale_days)
 
     print(f"[M1] 开始采集 {len(companies)} 家企业（共享浏览器 + 注册表源）")
     all_evs = []

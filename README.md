@@ -83,9 +83,11 @@ cd backend && python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | 源 | 用途 | 权重 |
 |---|---|---|
 | 智联招聘（浏览器渲染） | 企业双休证据 + 岗位 | job_post 0.4 |
-| Bing 搜索片段 | 员工口碑 | review 0.9 / 软文 0.1 |
+| Bing 搜索片段（含小红书站点限定） | 员工口碑 | review 0.9 / 软文 0.1 |
 | UGC 用户提交（审核制） | 证据 + 岗位 | 合同 1.0 / offer 0.9 / 其他 0.5 |
 | 企业官网（L1/L2 逐家配置） | 岗位（关闭自动移除） | —— |
+| 排行榜名录（财富500强/中企联/互联网百强） | 种子企业池扩编（当前 1019 家） | —— |
+| 苏宁易购（人工确认制） | 商品候选（只取信息，不存链接） | —— |
 
 源开关与健康统计：`crawler/sources_config.json` + 周更报告；详见 [docs/sources.md](docs/sources.md)。
 

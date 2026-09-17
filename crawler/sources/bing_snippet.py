@@ -16,7 +16,15 @@ from sources.base import RawEvidence, Source
 
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/148.0 Safari/537.36")
-QUERY_TEMPLATES = ["{kw} 双休吗", "{kw} 加班", "{kw} 大小周 单休"]
+# 通用模板 + 小红书站点限定模板（小红书内容经搜索引擎索引间接获取，
+# 不直接抓取小红书：其接口有签名风控，员工笔记从搜索结果片段进入 review 权重 0.9）
+QUERY_TEMPLATES = [
+    "{kw} 双休吗",
+    "{kw} 加班",
+    "{kw} 大小周 单休",
+    "{kw} 双休 site:xiaohongshu.com",
+    "{kw} 加班 site:xiaohongshu.com",
+]
 _BLOCK_RE = re.compile(r"<li class=\"b_algo\".*?<h2[^>]*><a[^>]*href=\"([^\"]+)\"[^>]*>(.*?)</a></h2>(.*?)</li>", re.S)
 # 问句式标题（知乎「XX公司周末双休吗？」）本身含关键词但语义是疑问 →
 # 仅用正文片段打分，避免把「想知道答案」误判为「确实双休」

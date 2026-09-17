@@ -16,9 +16,9 @@
 | `job_post` | 0.4 | 招聘岗位描述的公开链接（明确写「双休/做五休二」） |
 | `review_promo` | 0.1 | 一般公开报道（权重低，仅供参考） |
 
-**提交方式**：PR 修改 `data/companies_all.json` 不行——数据由仓库每周自动生成，请改为：
-- 提供**证据链接** + 企业全名，在 Issue 或 PR 中说明，维护者将证据加入证据库后重跑生成
-- 或在 `data/evidences.json` 的 PR 中附带新证据条目（`company_name` + `url` + `keywords` + 来源类型）
+**提交方式**：数据由仓库每周自动生成，不要直接改生成产物（`companies.json` 等），请：
+- 提供**证据链接** + 企业全名，在 Issue 中说明，维护者将证据加入证据库后重跑生成
+- 或提 PR 补充 `data/companies/seed.csv` 的企业条目（仅企业池扩编，不涉及评级）
 
 ### 2. 维护好物目录
 
@@ -33,6 +33,10 @@ company_name,category,product,official_link,note
 - **只允许收录白名单（L1/L2）企业**的商品
 - 链接指向品牌官方店/官网（不收录第三方分销链接）
 - 每家建议 1~5 件代表商品，品类标注准确
+
+候选从哪来：维护者跑 `cd crawler && .venv/bin/python collect_goods.py` 生成
+`data/goods_candidates.csv`（苏宁搜索的商品标题/SKU/品类猜测，**不含链接**），
+人工挑选代表商品并补 `official_link` 后追加到 `data/goods.csv`（PR 提交）。
 
 ### 3. 反馈与上报
 
